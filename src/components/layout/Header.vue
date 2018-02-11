@@ -1,43 +1,42 @@
 <template lang="pug">
   header
     .container.is-fluid.navbar
-      .navbar-menu.columns
-        .navbar-start.column
-          .logo
-            a(href="index.html")
-              img(src="@/assets/logo.png" alt="logo" height="95")
-              h1.letra_logo OF
-        .lista.navbar-end.column#lista
-          ul.menu-list
+      .navbar-menu.m-t-lg
+        .navbar-start
+          a.navbar-menu.logo
+            img.navbar-item(src="@/assets/logo.png" alt="logo")
+            h1.title OF
+        .navbar-end
+          ul.navbar-menu
             li
-              a(href="blog.html")
+              a.navbar-item(href="blog.html")
                 b BLOG
             li
-              a(href="mailto:omarefg92@gmail.com")
+              a.navbar-item(href="mailto:omarefg92@gmail.com")
                 b CONTACT
             li
-              a.redes_sociales#redes_sociales(touchstart="menuCan()")
+              a.navbar-item(touchstart="menuCan()")
                 b SOCIAL
-              ul.social.menu-list#social
+              ul.navbar-menu
                 li
-                  a(href="https://www.platzi.com/@omarefg" target="_blank")
+                  a.navbar-item(href="https://www.platzi.com/@omarefg" target="_blank")
                     i.jjy-platzi
                 li
-                  a(href="https://codepen.io/omarefg/" target="_blank")
+                  a.navbar-item(href="https://codepen.io/omarefg/" target="_blank")
                     i.jjy-codepen
                 li
-                  a(href="https://www.linkedin.com/in/omarefg/" target="_blank")
+                  a.navbar-item(href="https://www.linkedin.com/in/omarefg/" target="_blank")
                     i.jjy-linkedin
                 li
-                  a(href="https://www.twitter.com/omarefg" target="_blank")
+                  a.navbar-item(href="https://www.twitter.com/omarefg" target="_blank")
                     i.jjy-twitter
                 li
-                  a(href="https://github.com/omarefg" target="_blank")
+                  a.navbar-item(href="https://github.com/omarefg" target="_blank")
                     i.jjy-github
                 li
-                  a(href="https://www.instagram.com/omarefg92/" target="_blank")
+                  a.navbar-item(href="https://www.instagram.com/omarefg92/" target="_blank")
                     i.fth-instagram
-    .banner
+    .div
       img(src="@/assets/banner - copia2.jpg" alt="header" width="1349")
 </template>
 
@@ -47,7 +46,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .menu-list{
-    border: none !important;
+  .title{
+    position: relative;
+    top: 1.9rem;
+    right: 4.6rem;
+    font-size: 22px;
   }
+  .logo{
+    position: relative;
+    bottom: 1.5rem;
+  }
+
 </style>
