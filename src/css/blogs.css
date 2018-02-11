@@ -1,0 +1,51 @@
+a{
+  text-decoration: none;
+  color: #ddd60f;
+}
+p{
+  text-align: justify;
+}
+.banner{
+  margin-top: 25px;
+  overflow: hidden;
+  height: 600px;
+  position: relative;
+}
+.banner img{
+  opacity: .75;
+  position: absolute;
+  top: 0;
+}
+.title{
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  left: 25px;
+  font-family: 'Open Sans', sans-serif;
+}
+.title h1{
+  color: #282828;
+}
+.title h2{
+  color: #ddd60f;
+}
+.text{
+  margin: 50px 0;
+  color: #282828;
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+@media screen and (max-width:1024px){
+  .banner{
+    height: 500px;
+  }
+  p{
+    text-align: center;
+  }
+}
+@media screen and (max-width:768px){
+  .banner{
+    height: 400px;
+  }
+}
