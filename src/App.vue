@@ -1,15 +1,17 @@
 <template lang="pug">
   #app
     of-header
+    of-footer  
 </template>
 
 <script>
 import OfHeader from '@/components/layout/Header'
+import OfFooter from '@/components/layout/Footer'
 
 export default {
   name: 'app',
 
-  components: { OfHeader },
+  components: { OfHeader, OfFooter },
 
   data () {
     return {

@@ -4,57 +4,99 @@
       .navbar-menu.m-t-lg
         .navbar-start
           a.navbar-menu.logo
-            img.navbar-item(src="@/assets/logo.png" alt="logo")
+            img.navbar-item.image.is-96x96(src="@/assets/logo.png" alt="logo")
             h1.title OF
         .navbar-end
           ul.navbar-menu
             li
-              a.navbar-item(href="blog.html")
-                b BLOG
+              a.navbar-item.is-gray.dropdown.is-hoverable(aria-haspopup="true" aria-controls="dropdown-menu4")
+                b.dropdown-trigger {{ $t('language') }}
+                ul.dropdown-menu(id="dropdown-menu4" role="menu")
+                  li.dropdown-content
+                    a.dropdown-item.is-yellow(@click="selectLanguage('en')") {{ $t('english') }}
+                    a.dropdown-item.is-yellow(@click="selectLanguage('es')") {{ $t('spanish') }}
             li
-              a.navbar-item(href="mailto:omarefg92@gmail.com")
-                b CONTACT
+              a.navbar-item.is-gray(href="blog.html")
+                b Blog
             li
-              a.navbar-item(touchstart="menuCan()")
-                b SOCIAL
-              ul.navbar-menu
+              a.navbar-item.is-gray(href="mailto:omarefg92@gmail.com")
+                b {{ $t('contact') }}
+            li
+              a.navbar-item.social-menu.is-gray(touchstart="menuCan()")
+                b Social
+              ul.navbar-menu.social-list
                 li
-                  a.navbar-item(href="https://www.platzi.com/@omarefg" target="_blank")
+                  a.navbar-item.is-yellow(href="https://www.platzi.com/@omarefg" target="_blank")
                     i.jjy-platzi
                 li
-                  a.navbar-item(href="https://codepen.io/omarefg/" target="_blank")
+                  a.navbar-item.is-yellow(href="https://codepen.io/omarefg/" target="_blank")
                     i.jjy-codepen
                 li
-                  a.navbar-item(href="https://www.linkedin.com/in/omarefg/" target="_blank")
+                  a.navbar-item.is-yellow(href="https://www.linkedin.com/in/omarefg/" target="_blank")
                     i.jjy-linkedin
                 li
-                  a.navbar-item(href="https://www.twitter.com/omarefg" target="_blank")
+                  a.navbar-item.is-yellow(href="https://www.twitter.com/omarefg" target="_blank")
                     i.jjy-twitter
                 li
-                  a.navbar-item(href="https://github.com/omarefg" target="_blank")
+                  a.navbar-item.is-yellow(href="https://github.com/omarefg" target="_blank")
                     i.jjy-github
                 li
-                  a.navbar-item(href="https://www.instagram.com/omarefg92/" target="_blank")
+                  a.navbar-item.is-yellow(href="https://www.instagram.com/omarefg92/" target="_blank")
                     i.fth-instagram
-    .div
-      img(src="@/assets/banner - copia2.jpg" alt="header" width="1349")
 </template>
 
 <script>
 export default {
+  methods: {
+    selectLanguage (lang) {
+      this.$i18n.locale = lang
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+  $yellow: #ddd60f;
+  $gray: #282828;
+  $background: #f5f5f5;
+
   .title{
     position: relative;
-    top: 1.9rem;
-    right: 4.6rem;
+    top: 2.1rem;
+    right: 4.3rem;
     font-size: 22px;
   }
   .logo{
     position: relative;
     bottom: 1.5rem;
   }
-
+  .social-list{
+    transition: 1s;
+    position: absolute;
+    right: -20rem;
+    opacity: .1;
+  }
+  .social-menu:hover ~.social-list{
+    transition: 1s;
+    right: 0;
+    opacity: 1;
+  }
+  .social-list:hover{
+    right: 0;
+    opacity: 1;
+  }
+  .is-yellow:hover{
+    color: $yellow;
+    transition: .3s;
+  }
+  .is-gray:hover{
+    color: $gray;
+    border-top: 2px solid $yellow;
+  }
+  .dropdown-item{
+    padding-top: .5rem;
+  }
+  .dropdown-content{
+    padding: 0;
+  }
 </style>
