@@ -1,14 +1,23 @@
 <template lang="pug">
-footer
-  div.footer
-    h6 2018 - Copyright
-      a Omar Flores
+  footer
+    .footer
+      .container
+        .content.has-text-centered
+          h6 2018 - Copyright
+          a Omar Flores
 </template>
 
-<script>
-export default {
-}
-</script>
+<style lang="scss" scoped>
+  $yellow: #ddd60f;
+  $gray: #282828;
 
-<style lang="css">
+  .content{
+    color: $gray;
+  }
+  a{
+    color: $yellow;
+  }
+  a:hover{
+    color: $gray;
+  }
 </style>
