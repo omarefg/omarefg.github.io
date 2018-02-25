@@ -1,30 +1,67 @@
 <template lang="pug">
-  #app(v-if="draw")
-    div
+  #app
+    section
       img(src="@/assets/banner - copia2.jpg" alt="header" width="1349")
-    .container
-      div
+    section.container
+      .ofTitle
         h2
-          b ABOUT
-      div
-        p Hi, I'm Omar! I'm a&nbsp;
+          b.content.is-large {{ $t('about') }}
+      div.ofContent
+        p.content.is-medium {{ $t('about1') }}&nbsp;
           span(ref="word")
           span.word |
-          |  Developer passionate about making web projects a reality. I believe websites are an indispensable tool for any industry, sometimes it's the first experience customers get, and I enjoy building software that make that experience really positive. I combine HTML, CSS & Javascript, always using the best practices to build fully functional and responsive websites, if you're interested in working with me don't hesitate to get in touch
+          |  {{ $t('about2') }}
+          br
+          br
+          | {{ $t('about3') }}
+          br
+          br
+          | {{ $t('about4') }}&nbsp;
+          a.ofContact {{ $t('about5') }}
+
+      .ofTitle
+        h2
+          b.content.is-large {{ $t('latestPosts') }}
+      .ofContent.columns.is-multiline
+        .post.column.is-4
+          a(href="#")
+            img(src="@/assets/post1min.png" alt="post1" width="250")
+          div.postTitle
+            a(href="#")
+              h5.subtitle ¿Por qué todos deberíamos tener una página web?
+          div
+            h6 Octubre - 2017
+        .post.column(v-if="twoPosts")
+          a(href="#")
+            img(src="@/assets/post1min.png" alt="post1" width="250")
+          div.postTitle
+            a(href="#")
+              h5.subtitle ¿Por qué todos deberíamos tener una página web?
+          div
+            h6 Octubre - 2017
+        .post.column(v-if="threePosts")
+          a(href="#")
+            img(src="@/assets/post1min.png" alt="post1" width="250")
+          div.postTitle
+            a(href="#")
+              h5.subtitle ¿Por qué todos deberíamos tener una página web?
+          div
+            h6 Octubre - 2017
 </template>
 
 <script>
 export default {
   data () {
     return {
-      draw: true,
       title: {
         words: ['Front-end', 'Web', 'JavaScript'],
         wordWrapper: this.$refs,
         wordWrapperContent: this.$refs,
         addingWord: false,
         counter: 0
-      }
+      },
+      twoPosts: false,
+      threePosts: false
     }
   },
 
@@ -62,9 +99,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .word {
-    animation: blinkAnim 500ms linear infinite;
-  }
+  $yellow: #ddd60f;
+  $gray: #e1e1e1;
+
   @keyframes blinkAnim {
     0% {
       opacity: 0;
@@ -72,5 +109,30 @@ export default {
     50% {
       opacity: 1;
     }
+  }
+  .word {
+    animation: blinkAnim 500ms linear infinite;
+  }
+
+  .ofTitle{
+    color: $yellow;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+  }
+  .ofContent{
+    margin-bottom: 5rem;
+  }
+  .ofContact{
+    border-bottom: 2px solid $yellow;
+    color: #4a4a4a;
+  }
+
+  .post{
+    display: inline-block;
+    width: 33.33%;
+  }
+  .postTitle{
+    width: 250px;
   }
 </style>
