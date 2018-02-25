@@ -3,7 +3,7 @@
     .container.is-fluid.navbar
       .navbar-menu.m-t-lg
         .navbar-start
-          a.navbar-menu.logo
+          router-link.navbar-menu.logo(:to="{ name: 'main' }")
             img.navbar-item.image.is-96x96(src="@/assets/logo.png" alt="logo")
             h1.title OF
         .navbar-end
@@ -16,7 +16,7 @@
                     a.dropdown-item.is-yellow(@click="selectLanguage('en')") {{ $t('english') }}
                     a.dropdown-item.is-yellow(@click="selectLanguage('es')") {{ $t('spanish') }}
             li
-              a.navbar-item.is-gray(href="blog.html")
+              router-link.navbar-item.is-gray(:to="{ name: 'blog'}")
                 b Blog
             li
               a.navbar-item.is-gray(href="mailto:omarefg92@gmail.com")

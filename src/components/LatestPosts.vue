@@ -5,30 +5,39 @@
         b.content.is-large {{ $t('latestPosts') }}
     .ofContent.columns.is-multiline
       .post.column.is-4
-        a(href="#")
+        router-link(:to="{ name: 'article1' }")
           img(src="@/assets/post1min.png" alt="post1" width="250")
-        div.postTitle
-          a(href="#")
+          .postTitle
             h5.subtitle ¿Por qué todos deberíamos tener una página web?
-        div
-          h6 Octubre - 2017
-      .post.column(v-if="twoPosts")
-        a(href="#")
+        h6 Octubre - 2017
+
+      .post.column.is-4(v-if="twoPosts")
+        router-link(:to="{ name: 'article1' }")
           img(src="@/assets/post1min.png" alt="post1" width="250")
-        div.postTitle
-          a(href="#")
+          .postTitle
             h5.subtitle ¿Por qué todos deberíamos tener una página web?
-        div
-          h6 Octubre - 2017
-      .post.column(v-if="threePosts")
-        a(href="#")
+        h6 Octubre - 2017
+
+      .post.column.is-4(v-if="threePosts")
+        router-link(:to="{ name: 'article1' }")
           img(src="@/assets/post1min.png" alt="post1" width="250")
-        div.postTitle
-          a(href="#")
+          .postTitle
             h5.subtitle ¿Por qué todos deberíamos tener una página web?
-        div
-          h6 Octubre - 2017
+        h6 Octubre - 2017
+
+
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      twoPosts: false,
+      threePosts: false
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
   $yellow: #ddd60f;

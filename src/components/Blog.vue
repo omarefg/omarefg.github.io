@@ -7,7 +7,7 @@
     div.entrada
       h1.title.is-centered ¿Por qué todos deberíamos tener una página web?
       h4.subtitle Octubre - 2017
-      a
+      router-link(:to="{ name: 'article1' }")
         button.button(type="button" name="button") {{ $t('readMore') }}
 </template>
 

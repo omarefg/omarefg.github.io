@@ -30,9 +30,7 @@ export default {
         wordWrapperContent: this.$refs,
         addingWord: false,
         counter: 0
-      },
-      twoPosts: false,
-      threePosts: false
+      }
     }
   },
 
