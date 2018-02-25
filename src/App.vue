@@ -2,7 +2,11 @@
   #app
     of-header
 
-    pm-about
+    of-about
+
+    of-latest-posts
+
+    of-blog  
 
     of-footer
 </template>
@@ -10,12 +14,14 @@
 <script>
 import OfHeader from '@/components/layout/Header'
 import OfFooter from '@/components/layout/Footer'
-import PmAbout from '@/components/About'
+import OfAbout from '@/components/About'
+import OfLatestPosts from '@/components/LatestPosts'
+import OfBlog from '@/components/Blog'
 
 export default {
   name: 'app',
 
-  components: { OfHeader, OfFooter, PmAbout },
+  components: { OfHeader, OfFooter, OfAbout, OfLatestPosts, OfBlog },
 
   data () {
     return {
