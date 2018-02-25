@@ -1,20 +1,15 @@
 <template lang="pug">
-section.container
-  header
-    div
-      img(src="@/assets/book.jpg" alt="header" height="")
+  section.container
+    header
+      div
+        img(src="@/assets/book.jpg" alt="header" height="")
 
-  div.entrada
-    h1.title.is-centered ¿Por qué todos deberíamos tener una página web?
-    h4.subtitle Octubre - 2017
-    a
-      button.button(type="button" name="button") {{ $t('readMore') }}
+    div.entrada
+      h1.title.is-centered ¿Por qué todos deberíamos tener una página web?
+      h4.subtitle Octubre - 2017
+      a
+        button.button(type="button" name="button") {{ $t('readMore') }}
 </template>
-
-<script>
-export default {
-}
-</script>
 
 <style lang="scss" scoped>
   $yellow: #ddd60f;

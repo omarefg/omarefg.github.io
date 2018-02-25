@@ -6,7 +6,9 @@
 
     of-latest-posts
 
-    of-blog  
+    of-blog
+
+    of-article1  
 
     of-footer
 </template>
@@ -17,21 +19,23 @@ import OfFooter from '@/components/layout/Footer'
 import OfAbout from '@/components/About'
 import OfLatestPosts from '@/components/LatestPosts'
 import OfBlog from '@/components/Blog'
+import OfArticle1 from '@/components/articles/article1'
 
 export default {
   name: 'app',
 
-  components: { OfHeader, OfFooter, OfAbout, OfLatestPosts, OfBlog },
-
-  data () {
-    return {
-
-    }
+  components: {
+    OfHeader,
+    OfFooter,
+    OfAbout,
+    OfLatestPosts,
+    OfBlog,
+    OfArticle1
   }
+
 }
 </script>
 
 <style lang="scss">
-  @import './css/index.css';
   @import './scss/main.scss';
 </style>
