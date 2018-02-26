@@ -21,4 +21,7 @@ export default {
 
 <style lang="scss">
   @import './scss/main.scss';
+  body{
+    font-family: 'Open Sans', sans-serif;
+  }
 </style>

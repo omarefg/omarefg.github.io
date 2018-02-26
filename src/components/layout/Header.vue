@@ -4,7 +4,7 @@
       .navbar-menu.m-t-lg
         .navbar-start
           router-link.navbar-menu.logo(:to="{ name: 'main' }")
-            img.navbar-item.image.is-96x96(src="@/assets/logo.png" alt="logo")
+            img.navbar-item.image.is-128x128(src="@/assets/logo.png" alt="logo")
             h1.title OF
         .navbar-end
           ul.navbar-menu
@@ -62,9 +62,9 @@ export default {
 
   .title{
     position: relative;
-    top: 2.1rem;
-    right: 4.3rem;
-    font-size: 22px;
+    top: 3rem;
+    right: 5.8rem;
+    font-size: 28px;
   }
   .logo{
     position: relative;
