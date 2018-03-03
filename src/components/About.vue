@@ -6,7 +6,7 @@
       .ofTitle
         h2
           b.content.is-large {{ $t('about') }}
-      div.ofContent
+      .ofContent
         p.content.is-medium {{ $t('about1') }}&nbsp;
           span(ref="word")
           span.word |
