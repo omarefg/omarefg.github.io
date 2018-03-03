@@ -3,11 +3,10 @@
     div
       img(src="@/assets/banner - copia2.jpg" alt="header" width="1349")
     .container
-      .ofTitle
-        h2
-          b.content.is-large {{ $t('about') }}
-      .ofContent
-        p.content.is-medium {{ $t('about1') }}&nbsp;
+      .content.is-large
+        h4
+          b {{ $t('about') }}
+        p {{ $t('about1') }}&nbsp;
           span(ref="word")
           span.word |
           |  {{ $t('about2') }}
@@ -17,7 +16,7 @@
           br
           br
           | {{ $t('about4') }}&nbsp;
-          a.ofContact {{ $t('about5') }}
+          a {{ $t('about5') }}
 </template>
 
 <script>
@@ -82,26 +81,24 @@ export default {
   .word {
     animation: blinkAnim 500ms linear infinite;
   }
-
-  .ofTitle{
+  .content h4{
     color: $yellow;
     border-bottom: 1px solid $gray;
     margin-bottom: 1rem;
     margin-top: 2.5rem;
   }
-  .ofContent{
+  .content p{
     margin-bottom: 5rem;
   }
-  .ofContact{
+  .content a{
     border-bottom: 2px solid $yellow;
     color: #4a4a4a;
   }
 
-  .post{
-    display: inline-block;
-    width: 33.33%;
-  }
-  .postTitle{
-    width: 250px;
+  @media screen and (max-width:768px){
+    .container{
+      margin-right: 20px;
+      margin-left: 20px;
+    }
   }
 </style>
