@@ -34,7 +34,9 @@
     text-align: center;
     border-bottom: 1px solid #282828;
     padding: 50px 0 25px 0;
-    margin: 0px 0;
+  }
+  .columns:last-child{
+    margin-bottom: 5rem;
   }
   @media screen and (max-width:768px){
     .container{

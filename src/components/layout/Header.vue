@@ -3,17 +3,18 @@
     .container.is-fluid
       .navbar
         .navbar-brand
-          .navbar-burger(ref="burger" @touchstart="addActiveClass('burger')")
-            span
-            span
-            span
-        .navbar-menu.m-t-lg
           .navbar-start
-            router-link.navbar-menu.logo(:to="{ name: 'main' }")
-              img.navbar-item.image.is-128x128(src="@/assets/logo.png" alt="logo")
-              h1.title OF
+            router-link(:to="{ name: 'main' }")
+              figure.image.is-64x64
+                img(src="@/assets/logo.png" alt="logo")
+              span OF
+          .navbar-burger(ref="burger" @touchstart="addActiveClass('burger', 'navbar-menu')")
+            span
+            span
+            span
+        .navbar-menu.is-shadowless(ref="navbar-menu")
           .navbar-end
-            ul.navbar-menu
+            ul.navbar-item.is-paddingless
               li
                 a.navbar-item.is-gray.dropdown.is-hoverable(aria-haspopup="true" aria-controls="dropdown-menu4")
                   b.dropdown-trigger {{ $t('language') }}
@@ -28,9 +29,9 @@
                 a.navbar-item.is-gray(href="mailto:omarefg92@gmail.com")
                   b {{ $t('contact') }}
               li
-                a.navbar-item.social-menu.is-gray
+                a.navbar-item.social-menu.is-gray(@touchstart="addSocialActiveClass('social-list')")
                   b Social
-                ul.navbar-menu.social-list
+                ul.social-list(ref="social-list")
                   li
                     a.navbar-item.is-yellow(href="https://www.platzi.com/@omarefg" target="_blank")
                       i.jjy-platzi
@@ -52,16 +53,22 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    selectLanguage (lang) {
-      this.$i18n.locale = lang
+  export default {
+    mounted () {
     },
-    addActiveClass (ref1) {
-      this.$refs[ref1].classList.toggle('is-active')
+    methods: {
+      selectLanguage (lang) {
+        this.$i18n.locale = lang
+      },
+      addActiveClass (ref1, ref2) {
+        this.$refs[ref1].classList.toggle('is-active')
+        this.$refs[ref2].classList.toggle('is-active')
+      },
+      addSocialActiveClass (social) {
+        this.$refs[social].classList.toggle('social-list-active')
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -69,30 +76,25 @@ export default {
   $gray: #282828;
   $background: #f5f5f5;
 
-  .title{
+  .navbar-start{
     position: relative;
-    top: 3rem;
-    right: 5.8rem;
-    font-size: 28px;
+    top: 0.75rem;
   }
-  .logo{
+  .navbar-start span{
     position: relative;
-    bottom: 1.5rem;
+    bottom: 2.75rem;
+    left: 0.75rem;
+    color: $gray;
   }
   .social-list{
     transition: 1s;
     position: absolute;
     right: -20rem;
     opacity: .1;
+    z-index: 10;
   }
-  .social-menu:hover ~.social-list{
-    transition: 1s;
-    right: 0;
-    opacity: 1;
-  }
-  .social-list:hover{
-    right: 0;
-    opacity: 1;
+  .social-list li{
+    display: inline-block;
   }
   .is-yellow:hover{
     color: $yellow;
@@ -107,5 +109,29 @@ export default {
   }
   .dropdown-content{
     padding: 0;
+  }
+  .social-list-active{
+    transition: 1s;
+    right: 0;
+    opacity: 1;
+  }
+  @media screen and (min-width: 769px) {
+    .social-list:hover{
+      right: 0;
+      opacity: 1;
+    }
+    .social-menu:hover ~.social-list{
+      transition: 1s;
+      right: 0;
+      opacity: 1;
+    }
+  }
+  @media screen and (max-width: 768px){
+    .navbar-start{
+      top:0;
+    }
+    .navbar-menu{
+      margin-bottom: 2rem;
+    }
   }
 </style>
