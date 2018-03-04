@@ -23,15 +23,18 @@
     color: $gray;
     transition: .3s;
   }
-  a:hover{
-    color: $yellow;
-    border: none;
-    font-size: 18px;
-    border-top: 1px solid $yellow;
-    border-right: 1px solid $yellow;
-    padding-right: 20px;
-  }
   .content{
     color: $gray;
+  }
+
+  @media screen and (min-width: 768px){
+    a:hover{
+      color: $yellow;
+      border: none;
+      font-size: 18px;
+      border-top: 1px solid $yellow;
+      border-right: 1px solid $yellow;
+      padding-right: 20px;
+    }
   }
 </style>

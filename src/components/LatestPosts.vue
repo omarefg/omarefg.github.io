@@ -8,8 +8,8 @@
         router-link(:to="{ name: 'article1' }")
           figure.image
             img(src="@/assets/post1min.png" alt="post1")
-          h5.subtitle ¿Por qué todos deberíamos tener una página web?
-        h6 Octubre - 2017
+          h5.subtitle {{ $t('article1Title') }}
+        h6 {{ $t('article1Subtitle') }}
 </template>
 
 <style lang="scss" scoped>

@@ -91,18 +91,10 @@
     position: absolute;
     right: -20rem;
     opacity: .1;
-    z-index: 10;
+    z-index: 5;
   }
   .social-list li{
     display: inline-block;
-  }
-  .is-yellow:hover{
-    color: $yellow;
-    transition: .3s;
-  }
-  .is-gray:hover{
-    color: $gray;
-    border-top: 2px solid $yellow;
   }
   .dropdown-item{
     padding-top: .5rem;
@@ -112,8 +104,16 @@
   }
   .social-list-active{
     transition: 1s;
-    right: 0;
     opacity: 1;
+    left: 0 !important;
+  }
+  .is-yellow:hover{
+    color: $yellow;
+    transition: .3s;
+  }
+  .is-gray:hover{
+    color: $gray;
+    border-top: 2px solid $yellow;
   }
   @media screen and (min-width: 769px) {
     .social-list:hover{
@@ -125,8 +125,13 @@
       right: 0;
       opacity: 1;
     }
+
   }
   @media screen and (max-width: 768px){
+    .social-list{
+      left: -280px;
+      right: 0;
+    }
     .navbar-start{
       top:0;
     }

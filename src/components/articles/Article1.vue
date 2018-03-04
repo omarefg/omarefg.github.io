@@ -4,29 +4,29 @@
       img(src="@/assets/post1min.png" alt="postimg" width="100%")
     .container
       .content.is-medium
-        h1.title ¿Por qué todos deberíamos tener una página web?
-        h2.subtitle Octubre - 2017
-        p En el mundo en el que vivimos, cuando necesitamos un servicio lo primero que hacemos es acudir a&nbsp;
-          a(href="https://google.com" target="_blank") Google
-          |, ya sea para buscar información al respecto, precios, o ver si podemos adquirirlo desde la comodidad de nuestro hogar.
+        h1.title {{ $t('article1Title') }}
+        h2.subtitle {{ $t('article1Subtitle') }}
+        p {{ $t('article1Content') }}&nbsp;
+          a(href="https://google.com" target="_blank") {{ $t('article1Content1') }}
+          |{{ $t('article1Content2') }}
           br
           br
-          |Hoy en día es impensable un modelo de negocio que exista sin presencia en Internet.
+          |{{ $t('article1Content3') }}
           br
           br
-          |Una página web, redes sociales  y una estrategia de marketing digital bien ejecutada garantizan poder llegar a la audiencia a la que se desea y generar un mejor impacto.
+          |{{ $t('article1Content4') }}
           br
           br
-          |Incluso, ésto no sólo aplica para el sector comercial, también para el talento humano.
+          |{{ $t('article1Content5') }}
           br
           br
-          |Actualmente, con un mercado laboral globalizado, quien tiene mejores oportunidades es el profesional que mejor sabe vender sus conocimientos y habilidades. Una buena preparación siempre debe ir de la mano de buena presencia en Internet y una estrategia de marketing digital bien ejecutada.
+          |{{ $t('article1Content6') }}
           br
           br
-          |Cada día son más los profesionales que tienen una página web personal donde exhiben sus triunfos laborales y se vuelven más cotizados por las mejores empresas.
+          |{{ $t('article1Content7') }}
           br
           br
-          |Es un hecho que quien lo haga va a tener un mayor alcance, va a generar más confianza y por ende tendrá acceso a mejores ofertas laborales.
+          |{{ $t('article1Content8') }}
 </template>
 
 <style lang="scss" scoped>

@@ -5,7 +5,7 @@
         img(src="@/assets/book.jpg" alt="header")
 
     .columns.is-multiline
-      .column.entrada.is-12
+      .column.is-12
         h1.title.is-centered ¿Por qué todos deberíamos tener una página web?
         h4.subtitle Octubre - 2017
         router-link(:to="{ name: 'article1' }")
@@ -16,6 +16,9 @@
   $yellow: #ddd60f;
   $gray: #282828;
 
+  header{
+    margin-bottom: 5rem;
+  }
   button{
     cursor: pointer;
     background-color: transparent;
@@ -24,19 +27,21 @@
     padding: 5px 10px;
     transition: .3s;
   }
-  button:hover{
-    font-size: 18px;
-    transition: .3s;
-    color: $yellow;
-    border: 1px solid $gray;
-  }
-  .entrada{
+  .column{
     text-align: center;
     border-bottom: 1px solid #282828;
     padding: 50px 0 25px 0;
   }
   .columns:last-child{
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
+  }
+  @media screen and (min-width:769px){
+    button:hover{
+      font-size: 18px;
+      transition: .3s;
+      color: $yellow;
+      border: 1px solid $gray;
+    }
   }
   @media screen and (max-width:768px){
     .container{
