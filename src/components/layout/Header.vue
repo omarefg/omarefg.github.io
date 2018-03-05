@@ -6,8 +6,7 @@
           .navbar-start
             router-link(:to="{ name: 'main' }")
               figure.image.is-64x64
-                img(src="@/assets/logo.png" alt="logo")
-              span OF
+                img(src="@/assets/logo.jpg" alt="logo")
           .navbar-burger(ref="burger" @touchstart="addActiveClass('burger', 'navbar-menu')")
             span
             span

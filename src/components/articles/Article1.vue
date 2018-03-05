@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     figure.image
-      img(src="@/assets/post1min.png" alt="postimg" width="100%")
+      img(src="@/assets/post1.jpg" alt="postimg" width="100%")
     .container
       .content.is-medium
         h1.title {{ $t('article1Title') }}

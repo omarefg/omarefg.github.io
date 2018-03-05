@@ -10,6 +10,12 @@
         h4.subtitle {{ $t('article1Subtitle') }}
         router-link(:to="{ name: 'article1' }")
           button.button(type="button" name="button") {{ $t('readMore') }}
+    .columns.is-multiline
+      .column.is-12
+        h1.title.is-centered {{ $t('articlePlatzi1Title') }}
+        h4.subtitle {{ $t('articlePlatzi1Subtitle') }}
+        a(href="https://goo.gl/85m7jE" target="_blank")
+          button.button(type="button" name="button") {{ $t('readMore') }}
 </template>
 
 <style lang="scss" scoped>
@@ -18,6 +24,7 @@
 
   header{
     margin-bottom: 5rem;
+    margin-top: 50px;
   }
   button{
     cursor: pointer;

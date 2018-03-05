@@ -5,11 +5,19 @@
     .columns.is-marginless
 
       .column.is-one-third
+        a(href="https://goo.gl/85m7jE" target="_blank")
+          figure.image
+            img(src="@/assets/post2.jpg" alt="post2")
+          h5.subtitle {{ $t('articlePlatzi1Title') }}
+        h6 {{ $t('articlePlatzi1Subtitle') }}
+
+      .column.is-one-third
         router-link(:to="{ name: 'article1' }")
           figure.image
-            img(src="@/assets/post1min.png" alt="post1")
+            img(src="@/assets/post1.jpg" alt="post1")
           h5.subtitle {{ $t('article1Title') }}
         h6 {{ $t('article1Subtitle') }}
+
 </template>
 
 <style lang="scss" scoped>

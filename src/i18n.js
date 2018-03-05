@@ -12,7 +12,7 @@ const messages = {
     about: 'About',
     latestPosts: 'Latest posts',
     about1: "Hi, I'm Omar! I'm a",
-    about2: 'Developer using Vue.js to create amazing aplications.',
+    about2: 'Developer using Vue.js to create amazing apps.',
     about3: "I believe websites are an indispensable tool for any industry, sometimes it's the first experience customers get, and I enjoy building software that make that experience really positive.",
     about4: "I combine HTML, CSS & Javascript, always using the best practices to build fully functional and responsive websites, if you're interested in working with me don't hesitate to",
     about5: 'get in touch',
@@ -27,7 +27,9 @@ const messages = {
     article1Content5: 'Even this does not only apply to the commercial sector, but also to human talent. ',
     article1Content6: 'Currently, with a globalized labor market, who has better opportunities is the professional who best knows how to sell their knowledge and skills. Good preparation should always go hand in hand with a good Internet presence and a well-executed digital marketing strategy.',
     article1Content7: 'Every day there are more professionals who have a personal website where they show their work triumphs and become more sought after by the best companies.',
-    article1Content8: 'It is a fact that whoever does it will have a greater reach, will generate more confidence and therefore will have access to better job offers.'
+    article1Content8: 'It is a fact that whoever does it will have a greater reach, will generate more confidence and therefore will have access to better job offers.',
+    articlePlatzi1Title: 'Access the DOM elements using $refs',
+    articlePlatzi1Subtitle: 'March - 2018'
   },
   es: {
     contact: 'Contacto',
@@ -52,7 +54,9 @@ const messages = {
     article1Content5: 'Incluso, ésto no sólo aplica para el sector comercial, también para el talento humano.',
     article1Content6: 'Actualmente, con un mercado laboral globalizado, quien tiene mejores oportunidades es el profesional que mejor sabe vender sus conocimientos y habilidades. Una buena preparación siempre debe ir de la mano de buena presencia en Internet y una estrategia de marketing digital bien ejecutada.',
     article1Content7: 'Cada día son más los profesionales que tienen una página web personal donde exhiben sus triunfos laborales y se vuelven más cotizados por las mejores empresas.',
-    article1Content8: 'Es un hecho que quien lo haga va a tener un mayor alcance, va a generar más confianza y por ende tendrá acceso a mejores ofertas laborales.'
+    article1Content8: 'Es un hecho que quien lo haga va a tener un mayor alcance, va a generar más confianza y por ende tendrá acceso a mejores ofertas laborales.',
+    articlePlatzi1Title: 'Accede a los elementos del DOM utilizando $refs',
+    articlePlatzi1Subtitle: 'Marzo - 2018'
   }
 }
 
