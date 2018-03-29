@@ -1,7 +1,7 @@
 <template lang="pug">
   section
     div
-      img(src="@/assets/banner.jpg" alt="header" width="1349")
+      img(src="@/assets/banner.jpg" alt="header")
     .container
       .content.is-large
         h4
@@ -20,56 +20,59 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      title: {
-        words: ['Front-end', 'Web', 'JavaScript'],
-        wordWrapper: this.$refs,
-        wordWrapperContent: this.$refs,
-        addingWord: false,
-        counter: 0
-      }
-    }
-  },
-
-  mounted () {
-    this.title.wordWrapper = this.title.wordWrapper.word
-    this.title.wordWrapperContent = this.title.wordWrapperContent.word.innerHTML
-    this.changeTitle()
-  },
-
-  methods: {
-    changeTitle () {
-      setInterval(() => {
-        if (this.title.wordWrapperContent.length > 0 && !this.title.addingWord) {
-          this.title.wordWrapper.innerHTML = this.title.wordWrapperContent.slice(0, -1)
-          this.title.wordWrapperContent = this.title.wordWrapper.innerHTML
-        } else {
-          this.title.addingWord = true
+  export default {
+    data () {
+      return {
+        title: {
+          words: ['Front-end', 'Web', 'JavaScript'],
+          wordWrapper: this.$refs,
+          wordWrapperContent: this.$refs,
+          addingWord: false,
+          counter: 0
         }
-        if (this.title.addingWord) {
-          if (this.title.wordWrapperContent.length < this.title.words[this.title.counter].length) {
-            this.title.wordWrapper.innerHTML = this.title.words[this.title.counter].slice(0, this.title.wordWrapperContent.length + 1)
+      }
+    },
+
+    mounted () {
+      this.title.wordWrapper = this.title.wordWrapper.word
+      this.title.wordWrapperContent = this.title.wordWrapperContent.word.innerHTML
+      this.changeTitle()
+    },
+
+    methods: {
+      changeTitle () {
+        setInterval(() => {
+          if (this.title.wordWrapperContent.length > 0 && !this.title.addingWord) {
+            this.title.wordWrapper.innerHTML = this.title.wordWrapperContent.slice(0, -1)
             this.title.wordWrapperContent = this.title.wordWrapper.innerHTML
           } else {
-            if (this.title.counter < this.title.words.length) { this.title.counter++ }
-            this.title.addingWord = false
+            this.title.addingWord = true
           }
-        }
-        if (this.title.counter === this.title.words.length) {
-          this.title.counter = 0
-        }
-      }, 300)
+          if (this.title.addingWord) {
+            if (this.title.wordWrapperContent.length < this.title.words[this.title.counter].length) {
+              this.title.wordWrapper.innerHTML = this.title.words[this.title.counter].slice(0, this.title.wordWrapperContent.length + 1)
+              this.title.wordWrapperContent = this.title.wordWrapper.innerHTML
+            } else {
+              if (this.title.counter < this.title.words.length) { this.title.counter++ }
+              this.title.addingWord = false
+            }
+          }
+          if (this.title.counter === this.title.words.length) {
+            this.title.counter = 0
+          }
+        }, 300)
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
   $yellow: #ddd60f;
   $gray: #e1e1e1;
 
+  img{
+    width: 100%;
+  }
   @keyframes blinkAnim {
     0% {
       opacity: 0;
