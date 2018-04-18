@@ -71,7 +71,7 @@
   $gray: #e1e1e1;
 
   img{
-    width: 100%;
+    width: 100% !important;
   }
   @keyframes blinkAnim {
     0% {
