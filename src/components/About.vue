@@ -1,7 +1,7 @@
 <template lang="pug">
   section
     div
-      img(src="@/assets/banner.jpg" alt="header")
+      img.headerBanner(src="@/assets/banner.jpg" alt="header")
     .container
       .content.is-large
         h4
@@ -70,7 +70,7 @@
   $yellow: #ddd60f;
   $gray: #e1e1e1;
 
-  img{
+  .headerBanner{
     width: 100% !important;
   }
   @keyframes blinkAnim {
