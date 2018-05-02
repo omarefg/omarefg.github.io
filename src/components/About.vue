@@ -69,7 +69,9 @@
 <style lang="scss" scoped>
   $yellow: #ddd60f;
   $gray: #e1e1e1;
-
+  img{
+    width: 100% !important;
+  }
   .headerBanner{
     width: 100% !important;
   }
