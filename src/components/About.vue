@@ -1,7 +1,7 @@
 <template lang="pug">
   section
     div
-      img(src="@/assets/banner.jpg" alt="header" width="100%")
+     
     .container
       .content.is-large
         h4
