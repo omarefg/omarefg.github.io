@@ -1,7 +1,7 @@
 <template lang="pug">
   section
     div
-      img.headerBanner(src="@/assets/banner.jpg" alt="header" width="100%")
+      img(src="@/assets/banner.jpg" alt="header" width="100%")
     .container
       .content.is-large
         h4
@@ -69,12 +69,6 @@
 <style lang="scss" scoped>
   $yellow: #ddd60f;
   $gray: #e1e1e1;
-  img{
-    width: 100% !important;
-  }
-  .headerBanner{
-    width: 100% !important;
-  }
   @keyframes blinkAnim {
     0% {
       opacity: 0;
