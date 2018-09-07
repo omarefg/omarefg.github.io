@@ -16,7 +16,7 @@
           br
           br
           | {{ $t('about4') }}&nbsp;
-          a {{ $t('about5') }}
+          a(href="mailto:omarefg92@gmail.com") {{ $t('about5') }}
 </template>
 
 <script>
@@ -92,6 +92,10 @@
   .content a{
     border-bottom: 2px solid $yellow;
     color: #4a4a4a;
+    transition: background-color 300ms;
+    &:hover {
+      background-color: $yellow;
+    }
   }
 
   @media screen and (max-width:768px){
