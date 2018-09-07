@@ -110,6 +110,9 @@
     color: $yellow;
     transition: .3s;
   }
+  .is-gray{
+    border-top: 2px solid transparent;
+  }
   .is-gray:hover{
     color: $gray;
     border-top: 2px solid $yellow;
