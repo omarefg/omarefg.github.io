@@ -70,8 +70,7 @@ module.exports = {
               limit: 8192,
               name: '[hash].[ext]',
               outputPath: 'assets',
-              esModule: false,
-              fallback: require.resolve('file-loader')
+              esModule: false
             }
           }
         ]
