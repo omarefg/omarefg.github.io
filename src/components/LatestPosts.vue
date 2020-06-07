@@ -3,6 +3,12 @@
     .content.is-large
       h4 {{ $t('latestPosts') }}
     .columns.is-marginless
+      .column.is-one-third
+        a(href="https://platzi.com/tutoriales/1646-backend-nodejs/4553-documenta-tu-api-con-postman/" target="_blank")
+          figure.image
+            img(src="@/assets/post3.jpg" alt="post2")
+          h5.subtitle {{ $t('articlePlatzi2Title') }}
+        h6 {{ $t('articlePlatzi2Subtitle') }}
 
       .column.is-one-third
         a(href="https://goo.gl/85m7jE" target="_blank")

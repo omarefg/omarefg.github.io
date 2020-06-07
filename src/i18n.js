@@ -12,9 +12,9 @@ const messages = {
     about: 'About',
     latestPosts: 'Latest posts',
     about1: "Hi, I'm Omar! I'm a",
-    about2: 'Developer using Vue.js to create amazing apps.',
-    about3: "I believe websites are an indispensable tool for any industry, sometimes it's the first experience customers get, and I enjoy building software that make that experience really positive.",
-    about4: "I combine HTML, CSS & Javascript, always using the best practices to build fully functional and responsive websites, if you're interested in working with me don't hesitate to",
+    about2: 'Developer.',
+    about3: 'I enjoy building software that generates positive experiences on people.',
+    about4: "If you're interested in working with me don't hesitate to",
     about5: 'get in touch',
     readMore: 'Read more',
     article1Title: 'Why do everyone should have a website?',
@@ -29,7 +29,9 @@ const messages = {
     article1Content7: 'Every day there are more professionals who have a personal website where they show their work triumphs and become more sought after by the best companies.',
     article1Content8: 'It is a fact that whoever does it will have a greater reach, will generate more confidence and therefore will have access to better job offers.',
     articlePlatzi1Title: 'Access the DOM elements using $refs',
-    articlePlatzi1Subtitle: 'March - 2018'
+    articlePlatzi1Subtitle: 'March - 2018',
+    articlePlatzi2Title: 'Document your API with Postman',
+    articlePlatzi2Subtitle: 'October - 2019'
   },
   es: {
     contact: 'Contacto',
@@ -39,9 +41,9 @@ const messages = {
     about: 'Sobre mi',
     latestPosts: 'Artículos recientes',
     about1: '¡Hola, mi nombre es Omar! Soy un desarrollador',
-    about2: 'que utiliza Vue.js para crear aplicaciones increíbles.',
-    about3: 'Creo que los sitios web son una heramienta indispensable para cualquier industria, a veces es el primer contacto que el usuario experimenta con la empresa, y disfruto construír software para que esa experiencia sea realmente positiva.',
-    about4: 'Combino HTML, CSS y JavaScript, siempre utilizando las mejores prácticas para construír sitios completamente funcionales y con responsive design, si estás interesado en trabajar conmigo no dudes en',
+    about2: '',
+    about3: 'Disfruto construír software que genere experiencias positivas.',
+    about4: 'Si estás interesado en trabajar conmigo no dudes en',
     about5: 'ponerte en contacto',
     readMore: 'Leer más',
     article1Title: '¿Por qué todos deberíamos tener una página web?',
@@ -56,7 +58,9 @@ const messages = {
     article1Content7: 'Cada día son más los profesionales que tienen una página web personal donde exhiben sus triunfos laborales y se vuelven más cotizados por las mejores empresas.',
     article1Content8: 'Es un hecho que quien lo haga va a tener un mayor alcance, va a generar más confianza y por ende tendrá acceso a mejores ofertas laborales.',
     articlePlatzi1Title: 'Accede a los elementos del DOM utilizando $refs',
-    articlePlatzi1Subtitle: 'Marzo - 2018'
+    articlePlatzi1Subtitle: 'Marzo - 2018',
+    articlePlatzi2Title: 'Documenta tu API con Postman',
+    articlePlatzi2Subtitle: 'Octubre - 2019'
   }
 }
 

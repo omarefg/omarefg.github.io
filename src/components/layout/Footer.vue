@@ -4,8 +4,8 @@
       .container
         .content.has-text-centered
           h6
-            a(href="https://drive.google.com/open?id=1kRxNBYWGnY-V1tYxLSeSqv39vzsXx4RU" target="_blank") Curriculum Vitae
-          h6.subtitle 2018 - Copyright
+            a(href="https://drive.google.com/file/d/1Ry_NuGeTQ2H-VRWmPyygdbsRkTV62tAQ/view?usp=sharing" target="_blank") Curriculum Vitae
+          h6.subtitle {{ new Date().getFullYear() }} - Copyright
           h6.title Omar Flores
 </template>
 

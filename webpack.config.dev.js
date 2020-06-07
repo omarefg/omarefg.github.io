@@ -1,18 +1,13 @@
-const path = require('path')
-const webpack = require('webpack')
+const { resolve } = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
-const TerserWebpackPlugin = require('terser-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'build.js'
   },
-  mode: 'production',
   module: {
     rules: [
       {
@@ -62,18 +57,14 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|gif|jpg|jpeg|webp|ttf|eot|woff|woff2|svg)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 1000,
-              name: '[hash].[ext]',
-              outputPath: 'assets',
-              esModule: false
-            }
+        test: /\.jpg|png|gif|woff|woff2|eot|ttf|svg|mp4|webm$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'assets/',
+            esModule: false
           }
-        ]
+        }
       },
       {
         test: /\.pug$/,
@@ -84,7 +75,7 @@ module.exports = {
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, './src')
+      '@': resolve(__dirname, './src')
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
@@ -96,21 +87,8 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#source-map',
-  optimization: {
-    minimizer: [
-      new TerserWebpackPlugin(),
-      new OptimizeCssAssetsPlugin()
-    ]
-  },
+  devtool: '#eval-source-map',
   plugins: [
-    new VueLoaderPlugin(),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'production'
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    }),
-    new CompressionPlugin()
+    new VueLoaderPlugin()
   ]
 }

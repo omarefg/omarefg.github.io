@@ -6,15 +6,21 @@
 
     .columns.is-multiline
       .column.is-12
-        h1.title.is-centered {{ $t('article1Title') }}
-        h4.subtitle {{ $t('article1Subtitle') }}
-        router-link(:to="{ name: 'article1' }")
+        h1.title.is-centered {{ $t('articlePlatzi2Title') }}
+        h4.subtitle {{ $t('articlePlatzi2Subtitle') }}
+        a(href="https://platzi.com/tutoriales/1646-backend-nodejs/4553-documenta-tu-api-con-postman/" target="_blank")
           button.button(type="button" name="button") {{ $t('readMore') }}
     .columns.is-multiline
       .column.is-12
         h1.title.is-centered {{ $t('articlePlatzi1Title') }}
         h4.subtitle {{ $t('articlePlatzi1Subtitle') }}
         a(href="https://goo.gl/85m7jE" target="_blank")
+          button.button(type="button" name="button") {{ $t('readMore') }}
+    .columns.is-multiline
+      .column.is-12
+        h1.title.is-centered {{ $t('article1Title') }}
+        h4.subtitle {{ $t('article1Subtitle') }}
+        router-link(:to="{ name: 'article1' }")
           button.button(type="button" name="button") {{ $t('readMore') }}
 </template>
 
@@ -29,10 +35,8 @@
   button{
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid $gray;
     color: $yellow;
     padding: 5px 10px;
-    transition: .3s;
   }
   .column{
     text-align: center;
@@ -44,8 +48,6 @@
   }
   @media screen and (min-width:769px){
     button:hover{
-      font-size: 18px;
-      transition: .3s;
       color: $yellow;
       border: 1px solid $gray;
     }
