@@ -67,10 +67,11 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1000,
+              limit: 8192,
               name: '[hash].[ext]',
               outputPath: 'assets',
-              esModule: false
+              esModule: false,
+              fallback: require.resolve('file-loader')
             }
           }
         ]
