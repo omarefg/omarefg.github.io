@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import OfAbout from '@/components/about'
+import OfAbout from '@/components/About'
 import OfLatestPosts from '@/components/LatestPosts'
 
 export default {

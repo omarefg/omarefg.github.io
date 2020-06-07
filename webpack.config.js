@@ -1,5 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -10,12 +11,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [path.resolve(__dirname, './src')]
-      },
       {
         test: /\.css$/,
         use: [
@@ -44,12 +39,12 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            'scss': [
+            scss: [
               'vue-style-loader',
               'css-loader',
               'sass-loader'
             ],
-            'sass': [
+            sass: [
               'vue-style-loader',
               'css-loader',
               'sass-loader?indentedSyntax'
@@ -66,14 +61,19 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]'
+          name: '[name].[ext]',
+          esModule: false
         }
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader'
       }
     ]
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, './src')
     },
     extensions: ['*', '.js', '.vue', '.json']
@@ -86,7 +86,10 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new VueLoaderPlugin()
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
