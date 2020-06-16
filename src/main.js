@@ -11,9 +11,10 @@ const router = new VueRouter({
   mode: 'history'
 })
 
-new Vue({
-  el: '#app',
-  render: h => h(App),
+const vue = new Vue({
+  router,
   i18n,
-  router
+  render: h => h(App)
 })
+
+vue.$mount('#app')

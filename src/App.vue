@@ -1,27 +1,28 @@
-<template lang="pug">
-  #app
-    of-header
-
-    router-view
-
-    of-footer
+<template>
+  <div id="app">
+    <side-bar/>
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import OfHeader from '@/components/layout/Header'
-import OfFooter from '@/components/layout/Footer'
+import SideBar from '@/components/organisms/SideBar'
 
 export default {
   name: 'app',
-
-  components: { OfHeader, OfFooter }
-
+  components: { SideBar },
+  mounted: () => {
+    const colorMode = localStorage.getItem('colorMode') || 'light'
+    document.body.classList.add(`is-${colorMode}-mode`)
+  }
 }
 </script>
 
 <style lang="scss">
-  @import './scss/main.scss';
-  body{
-    font-family: 'Open Sans', sans-serif;
-  }
+@import './styles/main.scss';
+
+#app {
+  display: flex;
+  min-height: 100vh;
+}
 </style>

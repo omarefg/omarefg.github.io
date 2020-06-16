@@ -1,0 +1,6 @@
+$unit: 8px;
+$borderRadius: $unit / 2;
+
+@function spacing($times: 1) {
+  @return $unit * $times;
+}

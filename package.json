@@ -1,8 +1,8 @@
 {
   "name": "personal-page",
-  "description": "Portafolio personal de Omar Flores Grimontt, desarrollador front-end.",
+  "description": "Omar Flores personal page, blog and experiments playground",
   "version": "2.0.0",
-  "author": "Omar Flores <omarefg92@gmail.com>",
+  "author": "Omar Flores Grimontt <dev@omarefg.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -29,11 +29,11 @@
     "css-loader": "3.5.3",
     "eslint": "7.2.0",
     "eslint-config-standard": "14.1.1",
-    "eslint-plugin-html": "6.0.2",
     "eslint-plugin-import": "2.20.2",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "4.0.1",
+    "eslint-plugin-vue": "6.2.2",
     "file-loader": "6.0.0",
     "node-sass": "4.14.1",
     "optimize-css-assets-webpack-plugin": "5.0.3",

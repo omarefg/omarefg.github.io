@@ -22,7 +22,14 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              prependData: `
+                    @import "${resolve(__dirname, 'src/styles/index.scss')}";
+                `
+            }
+          }
         ]
       },
       {
@@ -30,7 +37,14 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader?indentedSyntax'
+          {
+            loader: 'sass-loader?indentedSyntax',
+            options: {
+              prependData: `
+                    @import "${resolve(__dirname, 'src/styles/index.scss')}";
+                `
+            }
+          }
         ]
       },
       {

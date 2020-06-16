@@ -1,4 +1,4 @@
-const path = require('path')
+const { resolve } = require('path')
 const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -8,7 +8,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'build.js'
   },
@@ -27,7 +27,14 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              prependData: `
+                    @import "${resolve(__dirname, 'src/styles/index.scss')}";
+                `
+            }
+          }
         ]
       },
       {
@@ -35,7 +42,14 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader?indentedSyntax'
+          {
+            loader: 'sass-loader?indentedSyntax',
+            options: {
+              prependData: `
+                    @import "${resolve(__dirname, 'src/styles/index.scss')}";
+                `
+            }
+          }
         ]
       },
       {
@@ -84,7 +98,7 @@ module.exports = {
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, './src')
+      '@': resolve(__dirname, './src')
     },
     extensions: ['*', '.js', '.vue', '.json']
   },

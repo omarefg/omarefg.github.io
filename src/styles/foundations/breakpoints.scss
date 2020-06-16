@@ -1,0 +1,25 @@
+$breakpointExtraSmall: 600px;
+$breakpointSmall: 768px;
+$breakpointMedium: 1024px;
+$breakpointLarge: 1366px;
+$breakpointExtraLarge: 1920px;
+
+$breakpoints: (
+  'xs':  (min-width:  $breakpointExtraSmall),
+  's':  (min-width:  $breakpointSmall),
+  'm': (min-width:  $breakpointMedium),
+  'l':  (min-width: $breakpointLarge),
+  'xl':  (min-width: $breakpointExtraLarge),
+) !default;
+
+@mixin applyTo($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "No value could be retrieved from `#{$breakpoint}`. Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+$fontWeightRegular: 400;
+$fontWeightBold: 700;
+$fontFamilyBase: 'Ubuntu', sans-serif;
+$fontSizeBase: 16px;
+$fontSizeSmall: $fontSizeBase - 4px;
+
+$fontSizeH1: 3.5rem;
+$fontSizeH2: 1.75rem;
+$fontSizeH3: 1.25rem;
+
+h1 {
+  font-size: $fontSizeH1;
+  font-weight: $fontWeightBold;
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: $fontSizeH2;
+  font-weight: $fontWeightBold;
+  line-height: 1.5;
+}
+
+h3 {
+  font-size: $fontSizeH3;
+  font-weight: $fontWeightBold;
+  line-height: 1.5;
+}
