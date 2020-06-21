@@ -4,7 +4,6 @@ module.exports = {
     es6: true
   },
   extends: [
-    'plugin:vue/essential',
     'standard'
   ],
   globals: {
@@ -15,16 +14,8 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module'
   },
-  plugins: [
-    'vue'
-  ],
+  parser: 'babel-eslint',
   rules: {
-    'vue/html-indent': ['error', 2, {
-      attribute: 1,
-      baseIndent: 1,
-      closeBracket: 0,
-      alignAttributesVertically: true,
-      ignores: []
-    }]
+    'no-unused-expressions': 'off'
   }
 }

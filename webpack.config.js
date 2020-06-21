@@ -1,12 +1,12 @@
 const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.js',
   output: {
     path: resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -17,58 +17,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              prependData: `
-                    @import "${resolve(__dirname, 'src/styles/index.scss')}";
-                `
-            }
-          }
-        ]
-      },
-      {
-        test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader?indentedSyntax',
-            options: {
-              prependData: `
-                    @import "${resolve(__dirname, 'src/styles/index.scss')}";
-                `
-            }
-          }
-        ]
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            scss: [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader'
-            ],
-            sass: [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
-            ]
-          }
-        }
+        use: ['css-loader']
       },
       {
         test: /\.js$/,
@@ -88,20 +37,10 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test: /\.pug$/,
-        loader: 'pug-plain-loader'
       }
     ]
   },
-  resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.esm.js',
-      '@': resolve(__dirname, './src')
-    },
-    extensions: ['*', '.js', '.vue', '.json']
-  },
+  resolve: { extensions: ['.js'] },
   devServer: {
     historyApiFallback: true,
     noInfo: false,
@@ -110,7 +49,6 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#source-map',
   optimization: {
     minimizer: [
       new TerserWebpackPlugin(),
@@ -118,13 +56,19 @@ module.exports = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production'
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new CompressionPlugin()
+    new CompressionPlugin(),
+    new HtmlWebpackPlugin(
+      {
+        inject: true,
+        template: './index.html',
+        filename: './index.html'
+      }
+    )
   ]
 }

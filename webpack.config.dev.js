@@ -1,8 +1,8 @@
 const { resolve } = require('path')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.ts',
   output: {
     path: resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -11,63 +11,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              prependData: `
-                    @import "${resolve(__dirname, 'src/styles/index.scss')}";
-                `
-            }
-          }
-        ]
-      },
-      {
-        test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader?indentedSyntax',
-            options: {
-              prependData: `
-                    @import "${resolve(__dirname, 'src/styles/index.scss')}";
-                `
-            }
-          }
-        ]
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            scss: [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader'
-            ],
-            sass: [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
-            ]
-          }
-        }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/
       },
       {
@@ -79,19 +24,11 @@ module.exports = {
             esModule: false
           }
         }
-      },
-      {
-        test: /\.pug$/,
-        loader: 'pug-plain-loader'
       }
     ]
   },
   resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.esm.js',
-      '@': resolve(__dirname, './src')
-    },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['.tsx', '.ts', '.js']
   },
   devServer: {
     historyApiFallback: true,
@@ -101,8 +38,13 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map',
   plugins: [
-    new VueLoaderPlugin()
+    new HtmlWebpackPlugin(
+      {
+        inject: true,
+        template: './index.html',
+        filename: './index.html'
+      }
+    )
   ]
 }
