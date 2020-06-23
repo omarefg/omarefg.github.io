@@ -1,15 +1,18 @@
 class SunIcon extends HTMLElement {
+  size: number | string
+
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
+    this.size = this.getAttribute('size') || '32px'
     this.render()
   }
 
-  render () {
+  getTemplate ():string {
     return `
       <svg
-        width="32px"
-        height="32px"
+        width="${this.size}"
+        height="${this.size}"
         viewBox="0 0 512 512"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -66,6 +69,12 @@ class SunIcon extends HTMLElement {
         </g>
       </svg>
     `
+  }
+
+  render ():void {
+    if (this.shadowRoot) {
+      this.shadowRoot.innerHTML = this.getTemplate()
+    }
   }
 }
 

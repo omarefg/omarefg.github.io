@@ -5,12 +5,18 @@ class NotFound extends HTMLElement {
     this.render()
   }
 
-  render () {
+  getTemplate ():string {
     return `
       <div class="Error404">
         <h2>Error 404</h2>
       </div>
     `
+  }
+
+  render ():void {
+    if (this.shadowRoot) {
+      this.shadowRoot.innerHTML = this.getTemplate()
+    }
   }
 }
 

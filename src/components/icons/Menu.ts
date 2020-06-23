@@ -5,7 +5,7 @@ class MenuIcon extends HTMLElement {
     this.render()
   }
 
-  render () {
+  getTemplate ():string {
     return `
       <svg
         height="32px"
@@ -23,6 +23,12 @@ class MenuIcon extends HTMLElement {
         />
       </svg>
     `
+  }
+
+  render ():void {
+    if (this.shadowRoot) {
+      this.shadowRoot.innerHTML = this.getTemplate()
+    }
   }
 }
 

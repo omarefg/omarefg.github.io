@@ -1,3 +1,6 @@
+import { getPalette } from '../../styles/colors'
+import { getSpacing } from '../../styles/spacing'
+
 class Home extends HTMLElement {
   constructor () {
     super()
@@ -5,17 +8,36 @@ class Home extends HTMLElement {
     this.render()
   }
 
-  getStyles () {
+  getStyles ():string {
     return `
         <style>
-            :host {
-                display: block;
-            }
+          :host {
+            padding: ${getSpacing(8)};
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .principal {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            max-height: 600px;
+            margin-bottom: ${getSpacing(4)};
+            border-bottom: 1px solid ${getPalette().textColor};
+          }
+
+          .posts-container{
+            flex: 1;
+            display: grid;
+            grid-template-columns: calc(50% - 32px) calc(50% - 32px);
+            gap: 64px;
+          }
         </style>
     `
   }
 
-  getTemplate () {
+  getTemplate ():string {
     return `
       ${this.getStyles()}
       <main>
@@ -27,41 +49,11 @@ class Home extends HTMLElement {
     `
   }
 
-  render () {
+  render ():void {
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = this.getTemplate()
     }
   }
 }
-{ /* <style lang="scss" scoped>
-main {
-  padding: spacing(8);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  @include colorMode() {
-    color: theme('textColor');
-    background-color: theme('backgroundColor');
-  }
-}
-
-.principal {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  max-height: 600px;
-  margin-bottom: spacing(4);
-  @include colorMode() {
-    border-bottom: 1px solid theme('textColor');
-  }
-}
-
-.posts-container{
-  flex: 1;
-  display: grid;
-  grid-template-columns: calc(50% - 32px) calc(50% - 32px);
-  gap: 64px;
-}
-</style> */ }
 
 customElements.define('omarefg-home', Home)

@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: '/',
     filename: 'build.js'
   },
   mode: 'production',

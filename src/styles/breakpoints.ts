@@ -1,0 +1,5 @@
+export const extraSmall:string = '600px'
+export const small:string = '768px'
+export const medium:string = '1024px'
+export const large:string = '1366px'
+export const extraLarge:string = '1920px'
