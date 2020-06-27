@@ -1,3 +1,4 @@
+import '../organisms/Card'
 import { getPalette } from '../../styles/colors'
 import { getSpacing } from '../../styles/spacing'
 
@@ -42,8 +43,58 @@ class Home extends HTMLElement {
       ${this.getStyles()}
       <main>
         <section class="principal">
+          <of-card
+            is-top="true"
+            description="description"
+            articleLink="article"
+            content="Content"
+            src="${require('../../assets/post1.jpg')}"
+          >
+          </of-card>
         </section>
         <section class="posts-container">
+          <of-card
+            description="description"
+            articleLink="article"
+            content="Content"
+            src="${require('../../assets/post1.jpg')}"
+          >
+          </of-card>
+          <of-card
+            description="description"
+            articleLink="article"
+            content="Content"
+            src="${require('../../assets/post1.jpg')}"
+          >
+          </of-card>
+          <of-card
+            description="description"
+            articleLink="article"
+            content="Content"
+            src="${require('../../assets/post1.jpg')}"
+          >
+          </of-card>
+          <of-card
+            description="description"
+            articleLink="article"
+            content="Content"
+            src="${require('../../assets/post1.jpg')}"
+          >
+          </of-card>
+          <of-card
+            description="description"
+            articleLink="article"
+            content="Content"
+            src="${require('../../assets/post1.jpg')}"
+          >
+          </of-card>
+          <of-card
+            description="description"
+            articleLink="article"
+            content="Content"
+            src="${require('../../assets/post1.jpg')}"
+          >
+          </of-card>
         </section>
       </main>
     `
@@ -56,4 +107,4 @@ class Home extends HTMLElement {
   }
 }
 
-customElements.define('omarefg-home', Home)
+customElements.define('of-home', Home)

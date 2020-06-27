@@ -26,10 +26,9 @@ class App extends HTMLElement {
 
   getSection ():string {
     const route:string = getRoute()
-    console.log(route)
     switch (route) {
       case '/':
-        return '<omarefg-home></omarefg-home>'
+        return '<of-home></of-home>'
       default:
         return '<not-found></not-found>'
     }
@@ -66,6 +65,6 @@ class App extends HTMLElement {
   }
 }
 
-customElements.define('omarefg-app', App)
+customElements.define('of-app', App)
 
 export default App
