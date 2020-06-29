@@ -1,9 +1,10 @@
-class LogoIcon extends HTMLElement {
+import Element from '../../Element'
+
+class LogoIcon extends Element {
   size: number | string
 
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
     this.size = this.getAttribute('size') || '32px'
     this.render()
   }
@@ -21,12 +22,6 @@ class LogoIcon extends HTMLElement {
         />
       </svg>
     `
-  }
-
-  render ():void {
-    if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.getTemplate()
-    }
   }
 }
 

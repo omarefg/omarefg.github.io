@@ -1,13 +1,15 @@
-import './components/pages/Home'
-import './components/pages/NotFound'
+import Element from './Element'
+import './pages/Home'
+import './pages/NotFound'
+import './pages/Posts'
+import './pages/Post'
+import './pages/Projects'
 import './components/organisms/SideBar'
-import { getRoute } from './utils/router'
-import { getPalette } from './styles/colors'
+import { Posts } from './schemas/interfaces'
 
-class App extends HTMLElement {
+class App extends Element {
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
     this.render()
   }
 
@@ -17,18 +19,24 @@ class App extends HTMLElement {
           #root {
             display: flex;
             min-height: 100vh;
-            background-color: ${getPalette().backgroundColor};
-            color: ${getPalette().textColor};
+            background-color: ${this.styles.colors.getPalette().backgroundColor};
+            color: ${this.styles.colors.getPalette().textColor};
           }
         </style>
     `
   }
 
   getSection ():string {
-    const route:string = getRoute()
+    const route:string = this.utils.router.getRoute()
     switch (route) {
       case '/':
         return '<of-home></of-home>'
+      case '/posts':
+        return '<of-posts></of-posts>'
+      case `/posts/${this.utils.router.postRoutes[route.split('/')[2]]}`:
+        return '<of-post></of-post>'
+      case '/projects':
+        return '<of-projects></of-projects>'
       default:
         return '<not-found></not-found>'
     }
@@ -47,21 +55,11 @@ class App extends HTMLElement {
   initRootEvents ():void {
     const root = this.shadowRoot?.querySelector('#root')
     root?.addEventListener('color-mode', () => this.update())
+    root?.addEventListener('lang-mode', () => this.update())
   }
 
   connectedCallback ():void {
     this.initRootEvents()
-  }
-
-  render ():void {
-    if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.getTemplate()
-    }
-  }
-
-  update ():void {
-    this.render()
-    this.connectedCallback()
   }
 }
 

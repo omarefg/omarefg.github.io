@@ -1,15 +1,16 @@
+import Element from '../../Element'
+import { language } from '../../schemas/types'
+import { Posts } from '../../schemas/interfaces'
+
 import '../icons/Logo'
 import '../icons/Moon'
 import '../icons/Sun'
-import { getPalette } from '../../styles/colors'
-import { getSpacing } from '../../styles/spacing'
 
-class SideBar extends HTMLElement {
+class SideBar extends Element {
   hideBar: boolean
 
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
     this.hideBar = false
     this.render()
   }
@@ -26,7 +27,7 @@ class SideBar extends HTMLElement {
             position: relative;
             transition: .5s;
             height: 100%;
-            background-color: ${getPalette().sideBarBackgroundColor};
+            background-color: ${this.styles.colors.getPalette().sideBarBackgroundColor};
           }
 
           .is-hide {
@@ -34,13 +35,13 @@ class SideBar extends HTMLElement {
           }
 
           .is-rotated {
-            transform: rotate(180deg);
+            transform: rotate(60deg);
           }
 
           .side-bar-handler {
             position: fixed;
-            top: ${getSpacing(2)};
-            left: ${getSpacing(2)};
+            top: ${this.styles.spacing.getSpacing(2)};
+            left: ${this.styles.spacing.getSpacing(2)};
             background-color: transparent;
             border: none;
             cursor: pointer;
@@ -50,7 +51,7 @@ class SideBar extends HTMLElement {
 
           .is-sticky {
             position: sticky;
-            top: ${getSpacing(3)};
+            top: ${this.styles.spacing.getSpacing(3)};
           }
 
           .color-icons-container {
@@ -83,30 +84,41 @@ class SideBar extends HTMLElement {
             right: .25em;
             opacity: 1;
             transition: 0.5s;
-            fill: ${getPalette().textColor};
+            fill: ${this.styles.colors.getPalette().textColor};
           }
 
           .logo {
-            fill: ${getPalette().textColor};
+            fill: ${this.styles.colors.getPalette().textColor};
           }
 
           ul {
             list-style: none;
-            padding: 0 ${getSpacing()};
-            color: ${getPalette().textColor};
+            padding: 0 ${this.styles.spacing.getSpacing(3)};
+            color: ${this.styles.colors.getPalette().textColor};
           }
 
           li, summary {
-            padding: ${getSpacing()};
-            margin: ${getSpacing()} 0;
+            padding: ${this.styles.spacing.getSpacing(0.5)};
+            margin: ${this.styles.spacing.getSpacing(0.5)} 0;
             outline: none;
             user-select: none;
-            cursor: pointer;
-            border-bottom: 1px solid ${getPalette().textColor};
           }
 
-          details ul {
-            padding: 0 0 0 ${getSpacing()};
+          details li {
+            padding-left: ${this.styles.spacing.getSpacing(3)};
+          }
+
+          .level-2 {
+            padding-left: ${this.styles.spacing.getSpacing(2)}
+          }
+
+          a {
+            color: ${this.styles.colors.getPalette().textColor};
+            text-decoration: none;
+          }
+
+          a:hover {
+            text-decoration: underline;
           }
         </style>
     `
@@ -124,6 +136,16 @@ class SideBar extends HTMLElement {
     this.dispatchEvent(new CustomEvent('color-mode', {
       bubbles: true
     }))
+  }
+
+  setLanguage (lang: language):void {
+    const lastLanguage = localStorage.getItem('lang')
+    if (lastLanguage !== lang) {
+      localStorage.setItem('lang', lang)
+      this.dispatchEvent(new CustomEvent('lang-mode', {
+        bubbles: true
+      }))
+    }
   }
 
   handleSideBarClass ():void {
@@ -152,6 +174,16 @@ class SideBar extends HTMLElement {
     return 'color-mode-out'
   }
 
+  getLastPosts () {
+    return (Object.keys(this.getData().posts) as (keyof Posts)[])
+      .map((title: keyof Posts) => {
+        const post = this.getData().posts[title]
+        return `<li class="level-2">
+            <a target="${post.target}" href="${post.path}">${post.title}</a>
+          </li>`
+      }).slice(0, 10).join('')
+  }
+
   getTemplate ():string {
     return `
       ${this.getStyles()}
@@ -172,16 +204,14 @@ class SideBar extends HTMLElement {
             </div>
             <div>
               <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Projets</li>
-                <li>Contact</li>
-                <details>
-                  <summary>Language</summary>
-                  <ul>
-                    <li>English</li>
-                    <li>Spanish</li>
-                  </ul>
+                <li><a href="/">${this.getData().sidebar.home}</a></li>
+                <li><a href="/posts">Posts</a></li>
+                ${this.getLastPosts()}
+                <li><a href="/projects">${this.getData().sidebar.projects}</a></li>
+                <details id="lang-list">
+                  <summary>${this.getData().sidebar.language}</summary>
+                  <li data-lang="en">${this.getData().sidebar.english}</li>
+                  <li data-lang="es">${this.getData().sidebar.spanish}</li>
                 </details>
               </ul>
             </div>
@@ -204,20 +234,20 @@ class SideBar extends HTMLElement {
     sideBarHandler?.addEventListener('click', () => this.toggleSideBar())
   }
 
+  initLanguagesEvent ():void {
+    const langList = this.shadowRoot?.getElementById('lang-list')
+    const items = langList?.querySelectorAll('li')
+    items?.forEach(item => {
+      item.addEventListener('click', () => {
+        this.setLanguage(this.utils.attribute.getLanguageFromStr(item.dataset.lang || ''))
+      })
+    })
+  }
+
   connectedCallback ():void {
     this.initToggleSideBarButtonEvent()
     this.initColorModeButtonEvent()
-  }
-
-  render ():void {
-    if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.getTemplate()
-    }
-  }
-
-  update ():void {
-    this.render()
-    this.connectedCallback()
+    this.initLanguagesEvent()
   }
 }
 

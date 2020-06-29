@@ -1,10 +1,8 @@
-import { getBorderRadius, getSpacing } from '../../styles/spacing'
-import { getPalette } from '../../styles/colors'
+import Element from '../../Element'
 
-class Button extends HTMLElement {
+class Button extends Element {
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
     this.render()
   }
 
@@ -13,10 +11,10 @@ class Button extends HTMLElement {
       <style>
         button {
           background-color: transparent;
-          padding: ${getSpacing()} ${getSpacing(3)};
-          border-radius: ${getBorderRadius()};
-          border: 1px solid ${getPalette().textColor};
-          color: ${getPalette().textColor};
+          padding: ${this.styles.spacing.getSpacing()} ${this.styles.spacing.getSpacing(3)};
+          border-radius: ${this.styles.spacing.getBorderRadius()};
+          border: 1px solid ${this.styles.colors.getPalette().textColor};
+          color: ${this.styles.colors.getPalette().textColor};
         }
       </style>
     `
@@ -29,12 +27,6 @@ class Button extends HTMLElement {
         <slot name="content"></slot>
       </button>
     `
-  }
-
-  render ():void {
-    if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.getTemplate()
-    }
   }
 }
 

@@ -1,22 +1,14 @@
-interface palette {
-  backgroundColor: string,
-  sideBarBackgroundColor: string,
-  textColor: string
-}
-interface theme {
-  light: palette,
-  dark: palette
-}
-type mode = 'dark' | 'light'
+import { Palette, Theme } from '../schemas/interfaces'
+import { colorMode } from '../schemas/types'
 
-function getMode ():mode {
-  if (localStorage.getItem('colorMode') === 'dark') {
-    return 'dark'
+export function getColorMode ():colorMode {
+  if (localStorage.getItem('colorMode') === 'light') {
+    return 'light'
   }
-  return 'light'
+  return 'dark'
 }
 
-const themes:theme = {
+const themes:Theme = {
   light: {
     backgroundColor: '#f7f7f7',
     sideBarBackgroundColor: '#eee',
@@ -29,8 +21,8 @@ const themes:theme = {
   }
 }
 
-export function getPalette ():palette {
+export function getPalette ():Palette {
   return {
-    ...themes[getMode()]
+    ...themes[getColorMode()]
   }
 }

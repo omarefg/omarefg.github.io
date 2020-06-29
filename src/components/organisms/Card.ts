@@ -1,8 +1,8 @@
-import '../atoms/Button'
-import { getSpacing } from '../../styles/spacing'
+import Element from '../../Element'
 import { getBooleanFromStr } from '../../utils/attribute'
+import '../atoms/Button'
 
-class Card extends HTMLElement {
+class Card extends Element {
   isTop: boolean
   description: string
   articleLink: string
@@ -11,7 +11,6 @@ class Card extends HTMLElement {
 
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
     this.isTop = getBooleanFromStr(this.getAttribute('is-top') || 'false')
     this.description = this.getAttribute('description') || ''
     this.articleLink = this.getAttribute('articleLink') || ''
@@ -52,7 +51,7 @@ class Card extends HTMLElement {
           flex: 1;
           width: 100%;
           object-fit: cover;
-          margin-bottom: ${getSpacing(2)};
+          margin-bottom: ${this.styles.spacing.getSpacing(2)};
         }
 
         h1 {
@@ -113,12 +112,6 @@ class Card extends HTMLElement {
         </a>
       </article>
     `
-  }
-
-  render ():void {
-    if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.getTemplate()
-    }
   }
 }
 

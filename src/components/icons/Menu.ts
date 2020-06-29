@@ -1,7 +1,8 @@
-class MenuIcon extends HTMLElement {
+import Element from '../../Element'
+
+class MenuIcon extends Element {
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
     this.render()
   }
 
@@ -23,12 +24,6 @@ class MenuIcon extends HTMLElement {
         />
       </svg>
     `
-  }
-
-  render ():void {
-    if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.getTemplate()
-    }
   }
 }
 

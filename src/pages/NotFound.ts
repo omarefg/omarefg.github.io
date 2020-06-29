@@ -1,7 +1,8 @@
-class NotFound extends HTMLElement {
+import Element from '../Element'
+
+class NotFound extends Element {
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
     this.render()
   }
 
@@ -11,12 +12,6 @@ class NotFound extends HTMLElement {
         <h2>Error 404</h2>
       </div>
     `
-  }
-
-  render ():void {
-    if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.getTemplate()
-    }
   }
 }
 
