@@ -6,7 +6,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     path: resolve(__dirname, './dist'),
     publicPath: '/',
@@ -16,12 +16,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['css-loader']
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/
       },
       {
@@ -40,7 +36,9 @@ module.exports = {
       }
     ]
   },
-  resolve: { extensions: ['.js'] },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  },
   devServer: {
     historyApiFallback: true,
     noInfo: false,

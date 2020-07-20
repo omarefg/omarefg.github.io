@@ -1,6 +1,28 @@
 import Element from '../Element'
 
-import '../components/organisms/Banner'
+import '../components/organisms/Header'
+import '../components/organisms/Slider'
+
+const banners = [
+  {
+    image: require('../assets/banner1.jpg'),
+    title: 'Escribimos para recordar que estamos vivos',
+    subtitle: 'Mira mi blog',
+    path: '/blog'
+  },
+  {
+    image: require('../assets/banner2.jpg'),
+    title: 'Trabajamos para vivir, trabajar nos da un propósito',
+    subtitle: 'Mira mi portafolio',
+    path: '/projects'
+  },
+  {
+    image: require('../assets/banner3.jpg'),
+    title: '¿Quién eres?',
+    subtitle: 'Sobre mi',
+    path: '/about'
+  }
+]
 
 class Home extends Element {
   constructor () {
@@ -12,7 +34,6 @@ class Home extends Element {
     return `
         <style>
           :host {
-            padding: ${this.styles.spacing.getSpacing(8)};
             width: 100%;
           }
         </style>
@@ -23,7 +44,10 @@ class Home extends Element {
     return `
       ${this.getStyles()}
       <main>
-        <of-banner></of-banner>
+        <of-header></of-header>
+        <of-slider>
+          <template>${JSON.stringify(banners)}</template>
+        <of-slider/>
       </main>
     `
   }

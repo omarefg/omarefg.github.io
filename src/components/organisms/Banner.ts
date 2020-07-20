@@ -65,10 +65,10 @@ class Banner extends Element {
         <h1>Hello stranger</h1>
         <h2>Welcome</h2>
         <img src="${this.utils.api.getRoboHashUrl({
-          set: 'set1',
-          size: '150',
-          word: this.styles.colors.getColorMode()
-        })}">
+    set: 'set1',
+    size: '150',
+    word: this.styles.colors.getColorMode()
+  })}">
       </div>
     `
   }

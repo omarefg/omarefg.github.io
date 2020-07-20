@@ -1,11 +1,10 @@
 import Element from './Element'
 import './pages/Home'
+import './pages/About'
 import './pages/NotFound'
-import './pages/Posts'
+import './pages/Blog'
 import './pages/Post'
 import './pages/Projects'
-import './components/organisms/SideBar'
-import { Posts } from './schemas/interfaces'
 
 class App extends Element {
   constructor () {
@@ -16,11 +15,12 @@ class App extends Element {
   getStyles ():string {
     return `
         <style>
+          ${this.styles.global.globalStyles}
           #root {
             display: flex;
             min-height: 100vh;
-            background-color: ${this.styles.colors.getPalette().backgroundColor};
-            color: ${this.styles.colors.getPalette().textColor};
+            background-color: ${this.styles.colors.getPalette().background};
+            color: ${this.styles.colors.getPalette().text};
           }
         </style>
     `
@@ -31,12 +31,14 @@ class App extends Element {
     switch (route) {
       case '/':
         return '<of-home></of-home>'
-      case '/posts':
-        return '<of-posts></of-posts>'
+      case '/blog':
+        return '<of-blog></of-blog>'
       case `/posts/${this.utils.router.postRoutes[route.split('/')[2]]}`:
         return '<of-post></of-post>'
       case '/projects':
         return '<of-projects></of-projects>'
+      case '/about':
+        return '<of-about></of-about>'
       default:
         return '<not-found></not-found>'
     }
@@ -46,20 +48,9 @@ class App extends Element {
     return `
       <div id="root">
         ${this.getStyles()}
-        <side-bar></side-bar>
         ${this.getSection()}
       </div>
     `
-  }
-
-  initRootEvents ():void {
-    const root = this.shadowRoot?.querySelector('#root')
-    root?.addEventListener('color-mode', () => this.update())
-    root?.addEventListener('lang-mode', () => this.update())
-  }
-
-  connectedCallback ():void {
-    this.initRootEvents()
   }
 }
 

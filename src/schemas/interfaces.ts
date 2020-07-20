@@ -31,7 +31,6 @@ export interface Posts {
 }
 
 export interface DB {
-  sidebar: Sidebar;
   posts: Posts;
 }
 
@@ -41,9 +40,8 @@ export interface Languages {
 }
 
 export interface Palette {
-  backgroundColor: string;
-  sideBarBackgroundColor: string;
-  textColor: string;
+  background: string;
+  text: string;
 }
 
 export interface Theme {

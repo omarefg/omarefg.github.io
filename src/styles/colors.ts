@@ -2,22 +2,17 @@ import { Palette, Theme } from '../schemas/interfaces'
 import { colorMode } from '../schemas/types'
 
 export function getColorMode ():colorMode {
-  if (localStorage.getItem('colorMode') === 'light') {
-    return 'light'
-  }
   return 'dark'
 }
 
 const themes:Theme = {
   light: {
-    backgroundColor: '#f7f7f7',
-    sideBarBackgroundColor: '#eee',
-    textColor: '#323330'
+    background: '#fff',
+    text: '#111'
   },
   dark: {
-    backgroundColor: '#323330',
-    sideBarBackgroundColor: '#444',
-    textColor: '#f7f7f7'
+    background: '#111',
+    text: '#fff'
   }
 }
 

@@ -13,8 +13,8 @@ class Button extends Element {
           background-color: transparent;
           padding: ${this.styles.spacing.getSpacing()} ${this.styles.spacing.getSpacing(3)};
           border-radius: ${this.styles.spacing.getBorderRadius()};
-          border: 1px solid ${this.styles.colors.getPalette().textColor};
-          color: ${this.styles.colors.getPalette().textColor};
+          border: 1px solid ${this.styles.colors.getPalette().text};
+          color: ${this.styles.colors.getPalette().text};
         }
       </style>
     `

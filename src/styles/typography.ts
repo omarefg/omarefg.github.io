@@ -1,8 +1,9 @@
 import { getNumberFromStr } from '../utils/number'
 
-export const fontWeightRegular:string = '400'
+export const fontWeightLight:string = '500'
+export const fontWeightRegular:string = '600'
 export const fontWeightBold:string = '700'
-export const fontFamilyBase:string = "'Ubuntu', sans-serif"
+export const fontFamilyBase:string = "'Rajdhani', sans-serif;"
 export const fontSizeBase:string = '14px'
 export const fontSizeSmall:string = `${getNumberFromStr(fontSizeBase) - 4}px`
 
