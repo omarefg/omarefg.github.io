@@ -37,6 +37,8 @@
     "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "2.4.3"
+    "@types/jquery": "^3.5.1",
+    "@webcomponents/webcomponentsjs": "2.4.3",
+    "jquery": "^3.5.1"
   }
 }

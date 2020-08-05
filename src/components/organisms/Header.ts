@@ -1,4 +1,5 @@
 import Element from '../../Element'
+import '../atoms/Link'
 
 class Header extends Element {
   showNavLinks: boolean
@@ -34,9 +35,9 @@ class Header extends Element {
         <h1><a href="/">omarefg</a></h1>
         ${this.showNavLinks ? `
           <nav>
-            <a href="/about">About</a>
-            <a href="/projects">Projects</a>
-            <a href="/blog">Blog</a>
+            <of-link href="/about"><template>About</template></of-link>
+            <of-link href="/projects"><template>Projects</template></of-link>
+            <of-link href="/blog"><template>Blog</template></of-link>
           </nav>
         ` : ''}
       </header>

@@ -1,11 +1,15 @@
 import Element from '../Element'
+import { LanguageStats } from '../schemas/interfaces'
 
 import '../components/organisms/Header'
 
 class About extends Element {
   videoPlaybackRate: number
+  stats:LanguageStats
+
   constructor () {
     super()
+    this.stats = { data: [] }
     this.videoPlaybackRate = 0.2
     this.render()
     this.setVideoPlaybackRate()
@@ -55,6 +59,13 @@ class About extends Element {
   setVideoPlaybackRate ():void {
     const video = this.shadowRoot?.querySelector('video') as HTMLVideoElement
     video.playbackRate = this.videoPlaybackRate
+  }
+
+  connectedCallback () {
+    this.utils.api.getLanguagesStats()
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(error => console.log(error))
   }
 
   getTemplate ():string {

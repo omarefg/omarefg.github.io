@@ -1,4 +1,4 @@
-import { colorMode, language } from './types'
+import { colorMode, language, httpVerb, requestMode } from './types'
 
 export interface Sidebar {
   home: string;
@@ -116,8 +116,17 @@ export interface RoboHashUrlConfig {
   bgset?: string;
 }
 
+export interface APICallConfig {
+  method?: httpVerb;
+  headers?: Headers;
+  url: RequestInfo;
+  mode?: requestMode
+}
+
 export interface API {
   getRoboHashUrl(config?:RoboHashUrlConfig): string;
+  apiCall(config: APICallConfig): Promise<Response>;
+  getLanguagesStats(): Promise<Response>;
 }
 
 export interface Utils {
@@ -125,4 +134,13 @@ export interface Utils {
   number: Number;
   router: Router;
   api: API;
+}
+
+export interface LanguageStat {
+  name: String;
+  percentage: Number;
+}
+
+export interface LanguageStats {
+  data: LanguageStat[];
 }
