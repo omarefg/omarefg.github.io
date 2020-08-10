@@ -1,15 +1,13 @@
+import echarts from 'echarts'
 import Element from '../Element'
-import { LanguageStats } from '../schemas/interfaces'
 
 import '../components/organisms/Header'
 
 class About extends Element {
   videoPlaybackRate: number
-  stats:LanguageStats
 
   constructor () {
     super()
-    this.stats = { data: [] }
     this.videoPlaybackRate = 0.2
     this.render()
     this.setVideoPlaybackRate()
@@ -48,8 +46,9 @@ class About extends Element {
           .section-skills {
           }
 
-          embed {
+          canvas {
             width: 600px;
+            z-index: 1;
           }
 
         </style>
@@ -62,10 +61,32 @@ class About extends Element {
   }
 
   connectedCallback () {
-    this.utils.api.getLanguagesStats()
-      .then(res => res.json())
-      .then(res => console.log(res))
-      .catch(error => console.log(error))
+    this.utils.api.apiCall({
+      url: 'https://api.omarefg.com/api/stats'
+    })
+      .then(res => {
+        // @ts-ignore
+        const myChart = echarts.init(this.shadowRoot?.getElementById('myChart'))
+        var option = {
+          xAxis: {
+            type: 'category',
+            // @ts-ignore
+            data: res.codingActivityStats.map(cs => cs.range.date)
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [{
+            // @ts-ignore
+            data: res.codingActivityStats.map(cs => cs.grand_total.total_seconds / 60 / 60),
+            type: 'line',
+            smooth: true
+          }]
+        }
+        // @ts-ignore
+        myChart.setOption(option)
+        console.log(res)
+      })
   }
 
   getTemplate ():string {
@@ -77,9 +98,7 @@ class About extends Element {
           <h1>I have seen things, blablablaa</h1>
         </section>
         <section class="section-skills">
-          <figure>
-            <embed src="https://wakatime.com/share/@omarefg/6d91ba27-051a-42da-bb6f-adfcf791ecdf.svg"></embed>
-          </figure>
+        <div id="myChart" style="display: block; width: 1200px; height: 400px;"></div>
           <div>
             <hi>Skills</h1>
             <h3>aja. blabla bla</h3>

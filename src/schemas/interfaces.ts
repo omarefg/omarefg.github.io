@@ -126,7 +126,6 @@ export interface APICallConfig {
 export interface API {
   getRoboHashUrl(config?:RoboHashUrlConfig): string;
   apiCall(config: APICallConfig): Promise<Response>;
-  getLanguagesStats(): Promise<Response>;
 }
 
 export interface Utils {
@@ -134,13 +133,4 @@ export interface Utils {
   number: Number;
   router: Router;
   api: API;
-}
-
-export interface LanguageStat {
-  name: String;
-  percentage: Number;
-}
-
-export interface LanguageStats {
-  data: LanguageStat[];
 }
