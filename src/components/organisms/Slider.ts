@@ -28,8 +28,9 @@ class Slider extends OFElement {
           ${this.styles.global.globalStyles}
 
           h1 {
-            font-size: 90px;
+            font-size: 50px;
             margin: 20px 0 12px 0;
+            text-shadow: 0 0 5px ${this.styles.colors.getPalette().background};
           }
 
           .slider-image {
@@ -90,7 +91,7 @@ class Slider extends OFElement {
 
           .loader-bar div {
             height: 5px;
-            background-color: red;
+            background-color: ${this.styles.colors.getPalette().primaryColor};
           }
 
           .is-empty {
@@ -124,7 +125,7 @@ class Slider extends OFElement {
           }
 
           .btn:hover {
-            color: #ec4e00!important;
+            color: ${this.styles.colors.getPalette().primaryColor}!important;
           }
 
           .btn:hover .item-sec {

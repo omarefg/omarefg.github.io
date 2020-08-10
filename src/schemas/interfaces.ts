@@ -42,6 +42,7 @@ export interface Languages {
 export interface Palette {
   background: string;
   text: string;
+  primaryColor: string;
 }
 
 export interface Theme {
@@ -133,4 +134,12 @@ export interface Utils {
   number: Number;
   router: Router;
   api: API;
+}
+
+export interface AboutDescriptionInterface {
+  titleText: string;
+  bottom: string;
+  top: string;
+  left: string;
+  right: string;
 }

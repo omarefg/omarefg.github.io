@@ -8,11 +8,13 @@ export function getColorMode ():colorMode {
 const themes:Theme = {
   light: {
     background: '#fff',
-    text: '#111'
+    text: '#111',
+    primaryColor: '#ddd60f'
   },
   dark: {
     background: '#111',
-    text: '#fff'
+    text: '#fff',
+    primaryColor: '#ddd60f'
   }
 }
 

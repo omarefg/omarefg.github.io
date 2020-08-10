@@ -29,11 +29,11 @@ class Link extends Element {
             width: auto;
             margin: 0;
             line-height: 2em;
-            padding: 9px 51px;
+            padding: 9px 20px;
           }
 
           .link:hover {
-            color: #ec4e00!important;
+            color: ${this.styles.colors.getPalette().primaryColor}!important;
           }
 
           .link:hover .secondary {
@@ -55,8 +55,8 @@ class Link extends Element {
 
           .secondary {
             position: absolute!important;
-            bottom: 5px;
-            left: 52px;
+            bottom: 2px;
+            left: 21px;
             opacity: 0;
           }
         </style>
