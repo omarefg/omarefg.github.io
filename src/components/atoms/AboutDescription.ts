@@ -1,21 +1,13 @@
 import Element from '../../Element'
-import { AboutDescriptionInterface } from '../../schemas/interfaces.ts'
 
-class AboutDescription extends Element implements AboutDescriptionInterface {
+const positions = ['flex-start', 'flex-end', 'center']
+
+class AboutDescription extends Element {
   titleText: string;
-  bottom: string;
-  top: string;
-  left: string;
-  right: string;
 
   constructor () {
     super()
-    console.log(this.children[0]?.innerHTML)
     this.titleText = this.children[0]?.innerHTML || ''
-    this.top = this.getAttribute('top') || ''
-    this.right = this.getAttribute('right') || ''
-    this.bottom = this.getAttribute('bottom') || ''
-    this.left = this.getAttribute('left') || ''
     this.render()
   }
 
@@ -26,25 +18,37 @@ class AboutDescription extends Element implements AboutDescriptionInterface {
 
           :host {
             z-index: 100;
+            display: flex;
+            align-items: ${positions[this.utils.number.getRandomInt(0, positions.length - 1)]} ;
+            justify-content: ${positions[this.utils.number.getRandomInt(0, positions.length - 1)]} ;
+            padding: ${this.styles.spacing.getSpacing()};
+            white-space: nowrap;
           }
 
-          .description {
-            position: absolute;
-            top: ${this.top};
-            right: ${this.right};
-            bottom: ${this.bottom};
-            left: ${this.left};
+          .hide {
+            font-size: 0;
+            user-select: none;
+          }
+
+          .visible {
+            font-size: ${this.utils.number.getRandomInt(14, 32)}px;
+            transition: ${this.utils.number.getRandomInt(1, 3)}s font-size;
+            opacity: ${this.utils.number.getRandomFloat(0.2, 1)}
           }
         </style>
     `
   }
 
+  connectedCallback () {
+    setTimeout(() => {
+      this.shadowRoot?.querySelector('h2')?.classList.add('visible')
+    }, this.utils.number.getRandomFloat(0.1, 4.9) * 1000)
+  }
+
   getTemplate ():string {
     return `
       ${this.getStyles()}
-      <h2 class="description">
-        ${this.titleText}
-      </h2>
+      <h2 class="hide">${this.titleText}</h2>
     `
   }
 }

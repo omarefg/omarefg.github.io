@@ -70,6 +70,8 @@ export interface GlobalStyles {
 export interface Spacing {
   getSpacing(times?:number): string;
   getBorderRadius(): string;
+  vh(value:number): number;
+  vw(value:number): number;
 }
 
 export interface Typography {
@@ -103,6 +105,9 @@ export interface Attribute {
 
 export interface Number {
   getNumberFromStr(str:string): number;
+  shuffleArray(array: any[]): any[];
+  getRandomInt(min: number, max: number): number;
+  getRandomFloat(min: number, max: number): number;
 }
 
 export interface Router {
@@ -129,17 +134,24 @@ export interface API {
   apiCall(config: APICallConfig): Promise<Response>;
 }
 
+export interface ParallaxItConfig {
+  element: HTMLElement;
+  movement: number;
+  relX: number;
+  relY: number;
+  clientWidth: number;
+  clientHeight: number;
+  transition: number;
+}
+
+export interface GSAP {
+  parallaxIt(config: ParallaxItConfig): void;
+}
+
 export interface Utils {
   attribute: Attribute;
   number: Number;
   router: Router;
   api: API;
-}
-
-export interface AboutDescriptionInterface {
-  titleText: string;
-  bottom: string;
-  top: string;
-  left: string;
-  right: string;
+  gsap: GSAP;
 }

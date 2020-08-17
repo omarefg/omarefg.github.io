@@ -1,51 +1,57 @@
 import echarts from 'echarts'
-import Element from '../Element'
-import { AboutDescriptionInterface } from '../schemas/interfaces.ts'
+import OfElement from '../Element'
 
 import '../components/organisms/Header'
 import '../components/atoms/Link'
 import '../components/atoms/AboutDescription'
 
-const descriptions: AboutDescriptionInterface[] = [
-  {
-    titleText: 'DevOps',
-    top: '',
-    bottom: '',
-    left: '',
-    right: ''
-  },
-  {
-    titleText: 'Frontend',
-    top: '',
-    bottom: '',
-    left: '',
-    right: ''
-  },
-  {
-    titleText: 'Backend',
-    top: '',
-    bottom: '',
-    left: '',
-    right: ''
-  },
-  {
-    titleText: 'Software',
-    top: '',
-    bottom: '',
-    left: '',
-    right: ''
-  },
-  {
-    titleText: 'Automation',
-    top: '',
-    bottom: '',
-    left: '',
-    right: ''
-  }
+const descriptions: string[] = [
+  'Server Side Rendering',
+  'Web Components',
+  'React Native',
+  '',
+  'JavaScript',
+  'Frontend',
+  'Software',
+  'Backend',
+  'DevOps',
+  'Node',
+  'Docker',
+  'React',
+  'Linux',
+  'Redux',
+  'GraphQL',
+  '',
+  '',
+  'HTML',
+  'CSS',
+  'PWA',
+  'React Router',
+  'Svelte',
+  'Sapper',
+  'SQL',
+  'Express',
+  'NoSQL',
+  '',
+  '',
+  'Android',
+  'iOS',
+  'AWS',
+  '',
+  '',
+  '',
+  'Firebase',
+  'SASS',
+  'Next',
+  '',
+  '',
+  'CI/CD',
+  'UI/UX',
+  'Vue'
 ]
 
-class About extends Element {
-  videoPlaybackRate: number
+class About extends OfElement {
+  videoPlaybackRate: number;
 
   constructor () {
     super()
@@ -82,10 +88,10 @@ class About extends Element {
 
           .section-description {
             height: calc(100vh - 64px);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
             position: relative;
+            display: grid;
+            grid-template-rows: repeat(6, auto);
+            grid-template-columns: repeat(6, auto);
           }
 
           .section-skills {
@@ -104,46 +110,39 @@ class About extends Element {
     video.playbackRate = this.videoPlaybackRate
   }
 
-  getDescriptions (description: AboutDescriptionInterface):string {
+  getDescriptions (description: string):string {
     return `
-      <about-description
-        top="${description.top}"
-        left="${description.left}"
-        bottom="${description.bottom}"
-        right="${description.right}"
-      >
-        <template>${description.titleText}</template>
+      <about-description>
+        <template>${description}</template>
       </about-description>
     `
   }
 
-  connectedCallback () {
-    // this.utils.api.apiCall({
-    //   url: 'https://api.omarefg.com/api/stats'
-    // })
-    //   .then(res => {
-    //     // @ts-ignore
-    //     const myChart = echarts.init(this.shadowRoot?.getElementById('myChart'))
-    //     var option = {
-    //       xAxis: {
-    //         type: 'category',
-    //         // @ts-ignore
-    //         data: res.codingActivityStats.map(cs => cs.range.date)
-    //       },
-    //       yAxis: {
-    //         type: 'value'
-    //       },
-    //       series: [{
-    //         // @ts-ignore
-    //         data: res.codingActivityStats.map(cs => cs.grand_total.total_seconds / 60 / 60),
-    //         type: 'line',
-    //         smooth: true
-    //       }]
-    //     }
-    //     // @ts-ignore
-    //     myChart.setOption(option)
-    //     console.log(res)
-    //   })
+  addAnimationsToDescriptions (event: MouseEvent): void {
+    const section = event.currentTarget as HTMLElement
+    const { pageX, pageY } = event
+    const { offsetTop, offsetLeft, clientWidth, clientHeight } = section
+    const relX = pageX - offsetLeft
+    const relY = pageY - offsetTop
+    section.querySelectorAll('about-description').forEach(description => {
+      const title = description.shadowRoot?.querySelector('.visible') as HTMLElement
+      if (title?.innerText) {
+        this.utils.gsap.parallaxIt({
+          element: title,
+          relX,
+          relY,
+          clientHeight,
+          clientWidth,
+          movement: this.utils.number.getRandomInt(-100, -50),
+          transition: this.utils.number.getRandomFloat(0, 1.5)
+        })
+      }
+    })
+  }
+
+  connectedCallback (): void {
+    const descriptionSection = this.shadowRoot?.querySelector('.section-description') as HTMLElement
+    descriptionSection.addEventListener('mousemove', this.addAnimationsToDescriptions.bind(this))
   }
 
   getTemplate ():string {
@@ -152,8 +151,7 @@ class About extends Element {
       <main>
         <of-header></of-header>
         <section class="section-description">
-          <h1>Omar Flores</h1>
-          ${descriptions.map(this.getDescriptions.bind(this)).join('')}
+          ${this.utils.number.shuffleArray(descriptions).map(this.getDescriptions.bind(this)).join('')}
         </section>
         <section class="section-skills">
         <div id="myChart" style="display: block; width: 1200px; height: 400px;"></div>
