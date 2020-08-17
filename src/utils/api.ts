@@ -23,3 +23,7 @@ export function apiCall (config: APICallConfig): Promise<Response> {
     .then(({ body }) => body)
     .catch(error => { throw error })
 }
+
+export const apiUrl = 'https://api.omarefg.com/api'
+
+export const statsEndpoint = '/stats'

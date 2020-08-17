@@ -132,6 +132,8 @@ export interface APICallConfig {
 export interface API {
   getRoboHashUrl(config?:RoboHashUrlConfig): string;
   apiCall(config: APICallConfig): Promise<Response>;
+  apiUrl: string;
+  statsEndpoint: string;
 }
 
 export interface ParallaxItConfig {

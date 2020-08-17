@@ -95,11 +95,17 @@ class About extends OfElement {
           }
 
           .section-skills {
+            flex-direction: column;
           }
 
           canvas {
             width: 600px;
             z-index: 1;
+          }
+
+          #editors-stats {
+            height: 400px;
+            background-color: red;
           }
         </style>
     `
@@ -143,6 +149,27 @@ class About extends OfElement {
   connectedCallback (): void {
     const descriptionSection = this.shadowRoot?.querySelector('.section-description') as HTMLElement
     descriptionSection.addEventListener('mousemove', this.addAnimationsToDescriptions.bind(this))
+    // this.utils.api.apiCall({
+    //   url: `${this.utils.api.apiUrl}${this.utils.api.statsEndpoint}`
+    // })
+    //   .then(stats => {
+    //     console.log(stats)
+    //   })
+
+    window.addEventListener('scroll', () => {
+      const editorsStatsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          console.log(entry)
+        })
+      }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0
+      })
+      console.log('epa scrolié')
+      const editorsStat = this.shadowRoot?.querySelector('#editors-stats') as HTMLElement
+      editorsStatsObserver.observe(editorsStat)
+    })
   }
 
   getTemplate ():string {
@@ -154,7 +181,8 @@ class About extends OfElement {
           ${this.utils.number.shuffleArray(descriptions).map(this.getDescriptions.bind(this)).join('')}
         </section>
         <section class="section-skills">
-        <div id="myChart" style="display: block; width: 1200px; height: 400px;"></div>
+          <div id="editors-stats"></div>
+          <div id="myChart" style="display: block; width: 1200px; height: 400px;"></div>
           <div>
             <hi>Skills</h1>
             <h3>aja. blabla bla</h3>
