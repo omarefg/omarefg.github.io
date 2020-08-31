@@ -1,11 +1,11 @@
 import Element from '../Element'
 
-import '../components/organisms/Header'
-import '../components/organisms/Slider'
+import '../components/Header'
+import '../components/Slider'
 
 const banners = [
   {
-    image: require('../assets/banner1.jpg'),
+    image: require('../assets/banner5.jpg'),
     title: 'Escribimos para recordar que estamos vivos',
     subtitle: 'Mira mi blog',
     path: '/blog'

@@ -1,4 +1,4 @@
-import Element from '../../Element'
+import Element from '../Element'
 
 const positions = ['flex-start', 'flex-end', 'center']
 

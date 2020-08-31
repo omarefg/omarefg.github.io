@@ -1,9 +1,9 @@
 import echarts from 'echarts'
 import OfElement from '../Element'
 
-import '../components/organisms/Header'
-import '../components/atoms/Link'
-import '../components/atoms/AboutDescription'
+import '../components/Header'
+import '../components/Link'
+import '../components/AboutDescription'
 
 const descriptions: string[] = [
   'Server Side Rendering',
@@ -52,12 +52,16 @@ const descriptions: string[] = [
 
 class About extends OfElement {
   videoPlaybackRate: number;
+  chartsObserver: IntersectionObserver
+  chartsObserverOptions: IntersectionObserverInit
 
   constructor () {
     super()
     this.videoPlaybackRate = 0.2
     this.render()
     this.setVideoPlaybackRate()
+    this.chartsObserverOptions = { threshold: 0.2 }
+    this.chartsObserver = new IntersectionObserver(this.observerCallback, this.chartsObserverOptions)
   }
 
   getStyles ():string {
@@ -146,30 +150,23 @@ class About extends OfElement {
     })
   }
 
+  observerCallback (entries: IntersectionObserverEntry[]) {
+    entries.forEach(entry => {
+      console.log(entry)
+    })
+  }
+
   connectedCallback (): void {
     const descriptionSection = this.shadowRoot?.querySelector('.section-description') as HTMLElement
     descriptionSection.addEventListener('mousemove', this.addAnimationsToDescriptions.bind(this))
-    // this.utils.api.apiCall({
-    //   url: `${this.utils.api.apiUrl}${this.utils.api.statsEndpoint}`
-    // })
-    //   .then(stats => {
-    //     console.log(stats)
-    //   })
-
-    window.addEventListener('scroll', () => {
-      const editorsStatsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          console.log(entry)
-        })
-      }, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0
-      })
-      console.log('epa scrolié')
-      const editorsStat = this.shadowRoot?.querySelector('#editors-stats') as HTMLElement
-      editorsStatsObserver.observe(editorsStat)
+    // const editorsStat = this.shadowRoot?.querySelector('#editors-stats') as HTMLElement
+    // this.chartsObserver.observe(editorsStat)
+    this.utils.api.apiCall({
+      url: `${this.utils.api.apiUrl}${this.utils.api.statsEndpoint}`
     })
+      .then(stats => {
+        console.log(stats)
+      })
   }
 
   getTemplate ():string {

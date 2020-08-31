@@ -1,6 +1,6 @@
-import Element from '../../Element'
-import { getBooleanFromStr } from '../../utils/attribute'
-import '../atoms/Button'
+import Element from '../Element'
+import { getBooleanFromStr } from '../utils/attribute'
+import './Button'
 
 class Card extends Element {
   isTop: boolean

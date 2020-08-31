@@ -14,7 +14,7 @@ const themes:Theme = {
   dark: {
     background: '#111',
     text: '#fff',
-    primaryColor: '#ddd60f'
+    primaryColor: '#8a0303'
   }
 }
 

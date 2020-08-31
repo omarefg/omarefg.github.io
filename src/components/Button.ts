@@ -1,4 +1,4 @@
-import Element from '../../Element'
+import Element from '../Element'
 
 class Button extends Element {
   constructor () {

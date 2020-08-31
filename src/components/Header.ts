@@ -1,5 +1,5 @@
-import Element from '../../Element'
-import '../atoms/Link'
+import Element from '../Element'
+import './Link'
 
 class Header extends Element {
   showNavLinks: boolean

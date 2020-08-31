@@ -1,5 +1,5 @@
-import OFElement from '../../Element'
-import '../atoms/Link'
+import OFElement from '../Element'
+import './Link'
 
 interface Image {
   image: string,
@@ -28,9 +28,8 @@ class Slider extends OFElement {
           ${this.styles.global.globalStyles}
 
           h1 {
-            font-size: 50px;
-            margin: 20px 0 12px 0;
-            text-shadow: 0 0 5px ${this.styles.colors.getPalette().background};
+            font-size: 70px;
+            margin: 20px 0 12px 20px;
           }
 
           .slider-image {
@@ -104,7 +103,7 @@ class Slider extends OFElement {
           }
 
           .text-container {
-            width: 600px;
+            width: 400px;
             padding: 32px;
           }
 
